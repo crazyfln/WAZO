@@ -44,16 +44,17 @@ private:
 	CString m_strUserName;
 	CString m_strPwd;
 	CComboBox m_ctlChannel;
+	LLONG m_hPlayBack;
+	LLONG m_LoginID;
+	int m_nChannelCount;
+	bool m_bNewStart;
+
+public:
+	int m_nChannelID;
 	COleDateTime m_dateFrom;
 	COleDateTime m_timeFrom;
 	COleDateTime m_dateTo;
 	COleDateTime m_timeTo;
-
-	LLONG m_hPlayBack;
-	LLONG m_LoginID;
-	int m_nChannelCount;
-	int m_nChannelID;
-	bool m_bNewStart;
 
 private:
 	void DeviceDisConnect(LLONG lLoginID, char *sDVRIP, LONG nDVRPort);
@@ -67,7 +68,8 @@ private:
 
 public:
 	friend void CALLBACK DisConnectFunc(LLONG lLoginID, char *pchDVRIP, LONG nDVRPort, LDWORD dwUser);
-	friend void CALLBACK PlayCallBack(LLONG lPlayHandle, DWORD dwTotalSize, DWORD dwDownLoadSize, LDWORD dwUser);
+	friend void CALLBACK DownLoadPosCallBackFunc(LLONG lPlayHandle, DWORD dwTotalSize, DWORD dwDownLoadSize, LDWORD dwUser);
+	friend int CALLBACK DataCallBackFunc(LLONG lRealHandle, DWORD dwDataType, BYTE *pBuffer, DWORD dwBufSize, LDWORD dwUser);
 	afx_msg void OnBtnLogout();
 	afx_msg void OnButtonPlay();
 	afx_msg void OnButtonCapturePicture();

@@ -218,7 +218,7 @@ void CALLBACK DisConnectFunc(LLONG lLoginID, char *pchDVRIP, LONG nDVRPort, LDWO
 }
 
 //Process status callback
-void CALLBACK PlayCallBack(LLONG lPlayHandle, DWORD dwTotalSize, DWORD dwDownLoadSize, LDWORD dwUser)
+void CALLBACK DownLoadPosCallBackFunc(LLONG lPlayHandle, DWORD dwTotalSize, DWORD dwDownLoadSize, LDWORD dwUser)
 {
 	if (dwUser == 0)
 		return;
@@ -226,6 +226,27 @@ void CALLBACK PlayCallBack(LLONG lPlayHandle, DWORD dwTotalSize, DWORD dwDownLoa
 	CPlayVideoDlg *dlg = (CPlayVideoDlg *)dwUser;
 	if (dwDownLoadSize == -1)
 		dlg->OnButtonStop();
+}
+
+int CALLBACK DataCallBackFunc(LLONG lRealHandle, DWORD dwDataType, BYTE *pBuffer, DWORD dwBufSize, LDWORD dwUser)
+{
+	static int nVideoCount = 0;
+	char szFileName[64] = { 0 };
+
+	CPlayVideoDlg *dlg = (CPlayVideoDlg *)dwUser;
+	sprintf_s(szFileName, 63, "Video_%02d_%04d%02d%02d_%02d%02d%02d_%04d%02d%02d_%02d%02d%02d.mp4", dlg->m_nChannelID + 1,
+		dlg->m_dateFrom.GetYear(), dlg->m_dateFrom.GetMonth(), dlg->m_dateFrom.GetDay(), dlg->m_timeFrom.GetHour(), dlg->m_timeFrom.GetMinute(), dlg->m_timeFrom.GetSecond(),
+		dlg->m_dateTo.GetYear(), dlg->m_dateTo.GetMonth(), dlg->m_dateTo.GetDay(), dlg->m_timeTo.GetHour(), dlg->m_timeTo.GetMinute(), dlg->m_timeTo.GetSecond());
+
+	FILE *file = NULL;
+	fopen_s(&file, szFileName, "a+b");
+	if (file)
+	{
+		fwrite(pBuffer, 1, dwBufSize, file);
+		fclose(file);
+	}
+
+	return 1;
 }
 
 //Process when device disconnected.
@@ -371,7 +392,7 @@ void CPlayVideoDlg::OnButtonPlay()
 
 		for (int i = 0; i < 10; i++)
 		{
-			LLONG lHandle = CLIENT_PlayBackByTime(m_LoginID, nChannelID, &netTimeFrom, &netTimeTo, hPlayBack, PlayCallBack, (LDWORD)this);
+			LLONG lHandle = CLIENT_PlayBackByTimeEx(m_LoginID, nChannelID, &netTimeFrom, &netTimeTo, hPlayBack, DownLoadPosCallBackFunc, (LDWORD)this, DataCallBackFunc, (LDWORD)this);
 			if (0 != lHandle)
 			{
 				m_nChannelID = nChannelID;
@@ -528,8 +549,8 @@ void CPlayVideoDlg::OnButtonCapturePicture()
 			m_bNewStart = false;
 		}
 
-		sprintf_s(pPictureName, nPictureNameLength - 1, "%sPicture_%4d_%02d_%02d_%02d_%02d_%02d_%03d.jpg",
-			pDirectory, m_dateFrom.GetYear(), m_dateFrom.GetMonth(), m_dateFrom.GetDay(), 
+		sprintf_s(pPictureName, nPictureNameLength - 1, "%sPicture_%02d_%4d%02d%02d_%02d%02d%02d_%03d.jpg",
+			pDirectory, m_nChannelID + 1, m_dateFrom.GetYear(), m_dateFrom.GetMonth(), m_dateFrom.GetDay(), 
 			m_timeFrom.GetHour(), m_timeFrom.GetMinute(), m_timeFrom.GetSecond(), nPictureCount++);
 		
 		if (NULL != pDirectory)
