@@ -1,0 +1,248 @@
+Begin Time:2017-08-19 21:39:53.526
+[2017-08-19 21:39:53.526][P:14824/T:10256][dhnetsdk.cpp:118][Info][0] Leave CLIENT_InitEx.
+Begin Time:2017-08-19 21:40:10.191
+[2017-08-19 21:40:10.191][P:9788/T:6604][dhnetsdk.cpp:118][Info][0] Leave CLIENT_InitEx.
+[2017-08-19 21:40:18.439][P:9788/T:6604][dhnetsdk.cpp:413][Info][0] Enter CLIENT_LoginEx2. [IP=127.0.0.1, port=37777, SpeCap=0, lpDeviceInfo=0019E9E8.]
+[2017-08-19 21:40:18.650][P:9788/T:6604][dhnetsdk.cpp:449][Info][0] Leave CLIENT_LoginEx2. [error=0, login ID=40121944.]
+[2017-08-19 21:40:18.651][P:9788/T:6604][dhnetsdk.cpp:5606][Info][0] Enter CLIENT_QueryDevState. [lLoginID=40121944, nType=82, pBuf=0019E9AC, nBufLen=60, pRetLen=0019E9A0, waittime=1000.]
+[2017-08-19 21:40:18.713][P:9788/T:6604][dhnetsdk.cpp:5630][Info][0] Leave CLIENT_QueryDevState.[ret=1.]
+[2017-08-19 21:40:18.775][P:9788/T:6604][dhnetsdk.cpp:4373][Info][0] Enter CLIENT_QuerySystemInfo. [lLoginID=40121944, nSystemType=26, pSysInfoBuffer=0019EA4C, maxlen=2048, nSysInfolen=0019E9A0, waittime=1000.]
+[2017-08-19 21:40:18.787][P:9788/T:6604][dhnetsdk.cpp:4402][Info][0] Leave CLIENT_QuerySystemInfo.[ret=1.]
+[2017-08-19 21:40:25.359][P:9788/T:6604][dhnetsdk.cpp:1154][Info][0] Enter CLIENT_SetDeviceMode. [lLoginID=40121944, emType=6. pValue=0019F228]
+[2017-08-19 21:40:25.359][P:9788/T:6604][dhnetsdk.cpp:1173][Info][0] Leave CLIENT_SetDeviceMode. [ret=1].
+[2017-08-19 21:40:25.359][P:9788/T:6604][dhnetsdk.cpp:4899][Info][0] Enter CLIENT_FindFile. [lLoginID=40121944, nChannelId=0, nRecordFileType=0, cardid=00000000,StartTime=2017-08-13 00:00:00,EndTime=2017-08-13 23:59:59, bTime=0, waittime=2000.]
+[2017-08-19 21:40:25.456][P:9788/T:6604][dhnetsdk.cpp:4929][Info][0] Leave CLIENT_FindFile.[ret=39621968.]
+[2017-08-19 21:40:25.456][P:9788/T:6604][dhnetsdk.cpp:4946][Info][0] Enter CLIENT_FindNextFile. [lFindHandle=39621968, lpFindData=04EBFFE0.]
+[2017-08-19 21:40:25.456][P:9788/T:6604][dhnetsdk.cpp:4949][Info][0] Leave CLIENT_FindNextFile.[ret=0.]
+[2017-08-19 21:40:25.456][P:9788/T:6604][dhnetsdk.cpp:4966][Info][0] Enter CLIENT_FindClose. [lFindHandle=39621968.]
+[2017-08-19 21:40:25.457][P:9788/T:6604][dhnetsdk.cpp:4969][Info][0] Leave CLIENT_FindClose.[ret=1.]
+[2017-08-19 21:40:25.459][P:9788/T:6604][dhnetsdk.cpp:1154][Info][0] Enter CLIENT_SetDeviceMode. [lLoginID=40121944, emType=6. pValue=0019F1A0]
+[2017-08-19 21:40:25.459][P:9788/T:6604][dhnetsdk.cpp:1173][Info][0] Leave CLIENT_SetDeviceMode. [ret=1].
+[2017-08-19 21:40:25.459][P:9788/T:6604][dhnetsdk.cpp:5096][Info][0] Enter CLIENT_PlayBackByTime. [lLoginID=40121944, nChannelID=0, StartTime=2017-02% 08:13:00, StopTime=0000-00-2017 08:13:00, hWnd=00000000, cbDownLoadPos=00000000, dwPosUser=00020992.]
+[2017-08-19 21:40:25.459][P:9788/T:6604][dhnetsdk.cpp:5121][Info][0] ====CLIENT_PlayBackByTime:lpStartTime=2017-08-13 00:00:00, lpStopTime=2017-08-13 00:00:00
+[2017-08-19 21:40:25.537][P:9788/T:6604][dhnetsdk.cpp:5128][Info][0] Leave CLIENT_PlayBackByTime.[ret=0.]
+[2017-08-19 21:40:27.632][P:9788/T:6604][dhnetsdk.cpp:1154][Info][0] Enter CLIENT_SetDeviceMode. [lLoginID=40121944, emType=6. pValue=0019F228]
+[2017-08-19 21:40:27.632][P:9788/T:6604][dhnetsdk.cpp:1173][Info][0] Leave CLIENT_SetDeviceMode. [ret=1].
+[2017-08-19 21:40:27.632][P:9788/T:6604][dhnetsdk.cpp:4899][Info][0] Enter CLIENT_FindFile. [lLoginID=40121944, nChannelId=0, nRecordFileType=0, cardid=00000000,StartTime=2017-08-14 00:00:00,EndTime=2017-08-14 23:59:59, bTime=0, waittime=2000.]
+[2017-08-19 21:40:27.711][P:9788/T:6604][dhnetsdk.cpp:4929][Info][0] Leave CLIENT_FindFile.[ret=39621584.]
+[2017-08-19 21:40:27.711][P:9788/T:6604][dhnetsdk.cpp:4946][Info][0] Enter CLIENT_FindNextFile. [lFindHandle=39621584, lpFindData=04EBFFE0.]
+[2017-08-19 21:40:27.711][P:9788/T:6604][dhnetsdk.cpp:4949][Info][0] Leave CLIENT_FindNextFile.[ret=1.]
+[2017-08-19 21:40:27.711][P:9788/T:6604][dhnetsdk.cpp:4946][Info][0] Enter CLIENT_FindNextFile. [lFindHandle=39621584, lpFindData=04EC00A4.]
+[2017-08-19 21:40:27.711][P:9788/T:6604][dhnetsdk.cpp:4949][Info][0] Leave CLIENT_FindNextFile.[ret=1.]
+[2017-08-19 21:40:27.711][P:9788/T:6604][dhnetsdk.cpp:4946][Info][0] Enter CLIENT_FindNextFile. [lFindHandle=39621584, lpFindData=04EC0168.]
+[2017-08-19 21:40:27.711][P:9788/T:6604][dhnetsdk.cpp:4949][Info][0] Leave CLIENT_FindNextFile.[ret=0.]
+[2017-08-19 21:40:27.711][P:9788/T:6604][dhnetsdk.cpp:4966][Info][0] Enter CLIENT_FindClose. [lFindHandle=39621584.]
+[2017-08-19 21:40:27.711][P:9788/T:6604][dhnetsdk.cpp:4969][Info][0] Leave CLIENT_FindClose.[ret=1.]
+[2017-08-19 21:40:27.716][P:9788/T:6604][dhnetsdk.cpp:1154][Info][0] Enter CLIENT_SetDeviceMode. [lLoginID=40121944, emType=6. pValue=0019F1A0]
+[2017-08-19 21:40:27.716][P:9788/T:6604][dhnetsdk.cpp:1173][Info][0] Leave CLIENT_SetDeviceMode. [ret=1].
+[2017-08-19 21:40:27.716][P:9788/T:6604][dhnetsdk.cpp:5096][Info][0] Enter CLIENT_PlayBackByTime. [lLoginID=40121944, nChannelID=0, StartTime=2017-02% 08:14:21, StopTime=0034-37-2017 08:14:23, hWnd=0000003B, cbDownLoadPos=0000003B, dwPosUser=00020992.]
+[2017-08-19 21:40:27.716][P:9788/T:6604][dhnetsdk.cpp:5121][Info][0] ====CLIENT_PlayBackByTime:lpStartTime=2017-08-14 21:34:37, lpStopTime=2017-08-14 23:59:59
+[2017-08-19 21:40:27.903][P:9788/T:6604][dhnetsdk.cpp:5128][Info][0] Leave CLIENT_PlayBackByTime.[ret=40154224.]
+[2017-08-19 21:40:28.215][P:9788/T:6604][dhnetsdk.cpp:5526][Info][0] Enter CLIENT_GetLastError.
+[2017-08-19 21:40:28.215][P:9788/T:6604][dhnetsdk.cpp:5529][Info][0] Leave CLIENT_GetLastError.[Error code=80000081.]
+[2017-08-19 21:40:28.715][P:9788/T:6604][dhnetsdk.cpp:5526][Info][0] Enter CLIENT_GetLastError.
+[2017-08-19 21:40:28.715][P:9788/T:6604][dhnetsdk.cpp:5529][Info][0] Leave CLIENT_GetLastError.[Error code=80000081.]
+[2017-08-19 21:40:29.210][P:9788/T:6604][dhnetsdk.cpp:5526][Info][0] Enter CLIENT_GetLastError.
+[2017-08-19 21:40:29.210][P:9788/T:6604][dhnetsdk.cpp:5529][Info][0] Leave CLIENT_GetLastError.[Error code=80000081.]
+[2017-08-19 21:40:29.384][P:9788/T:6604][dhnetsdk.cpp:1154][Info][0] Enter CLIENT_SetDeviceMode. [lLoginID=40121944, emType=6. pValue=0019F228]
+[2017-08-19 21:40:29.384][P:9788/T:6604][dhnetsdk.cpp:1173][Info][0] Leave CLIENT_SetDeviceMode. [ret=1].
+[2017-08-19 21:40:29.384][P:9788/T:6604][dhnetsdk.cpp:4899][Info][0] Enter CLIENT_FindFile. [lLoginID=40121944, nChannelId=0, nRecordFileType=0, cardid=00000000,StartTime=2017-08-15 00:00:00,EndTime=2017-08-15 23:59:59, bTime=0, waittime=2000.]
+[2017-08-19 21:40:29.461][P:9788/T:6604][dhnetsdk.cpp:4929][Info][0] Leave CLIENT_FindFile.[ret=39622064.]
+[2017-08-19 21:40:29.461][P:9788/T:6604][dhnetsdk.cpp:4946][Info][0] Enter CLIENT_FindNextFile. [lFindHandle=39622064, lpFindData=04EBFFE0.]
+[2017-08-19 21:40:29.461][P:9788/T:6604][dhnetsdk.cpp:4949][Info][0] Leave CLIENT_FindNextFile.[ret=1.]
+[2017-08-19 21:40:29.461][P:9788/T:6604][dhnetsdk.cpp:4946][Info][0] Enter CLIENT_FindNextFile. [lFindHandle=39622064, lpFindData=04EC00A4.]
+[2017-08-19 21:40:29.461][P:9788/T:6604][dhnetsdk.cpp:4949][Info][0] Leave CLIENT_FindNextFile.[ret=1.]
+[2017-08-19 21:40:29.461][P:9788/T:6604][dhnetsdk.cpp:4946][Info][0] Enter CLIENT_FindNextFile. [lFindHandle=39622064, lpFindData=04EC0168.]
+[2017-08-19 21:40:29.461][P:9788/T:6604][dhnetsdk.cpp:4949][Info][0] Leave CLIENT_FindNextFile.[ret=1.]
+[2017-08-19 21:40:29.461][P:9788/T:6604][dhnetsdk.cpp:4946][Info][0] Enter CLIENT_FindNextFile. [lFindHandle=39622064, lpFindData=04EC022C.]
+[2017-08-19 21:40:29.461][P:9788/T:6604][dhnetsdk.cpp:4949][Info][0] Leave CLIENT_FindNextFile.[ret=1.]
+[2017-08-19 21:40:29.461][P:9788/T:6604][dhnetsdk.cpp:4946][Info][0] Enter CLIENT_FindNextFile. [lFindHandle=39622064, lpFindData=04EC02F0.]
+[2017-08-19 21:40:29.462][P:9788/T:6604][dhnetsdk.cpp:4949][Info][0] Leave CLIENT_FindNextFile.[ret=1.]
+[2017-08-19 21:40:29.462][P:9788/T:6604][dhnetsdk.cpp:4946][Info][0] Enter CLIENT_FindNextFile. [lFindHandle=39622064, lpFindData=04EC03B4.]
+[2017-08-19 21:40:29.462][P:9788/T:6604][dhnetsdk.cpp:4949][Info][0] Leave CLIENT_FindNextFile.[ret=0.]
+[2017-08-19 21:40:29.462][P:9788/T:6604][dhnetsdk.cpp:4966][Info][0] Enter CLIENT_FindClose. [lFindHandle=39622064.]
+[2017-08-19 21:40:29.462][P:9788/T:6604][dhnetsdk.cpp:4969][Info][0] Leave CLIENT_FindClose.[ret=1.]
+[2017-08-19 21:40:29.462][P:9788/T:6604][dhnetsdk.cpp:2346][Info][0] Enter CLIENT_StopPlayBack. [lPlayHandle=40154224.]
+[2017-08-19 21:40:29.538][P:9788/T:6604][dhnetsdk.cpp:2361][Info][0] Leave CLIENT_StopPlayBack.[ret=1.]
+[2017-08-19 21:40:29.547][P:9788/T:6604][dhnetsdk.cpp:1154][Info][0] Enter CLIENT_SetDeviceMode. [lLoginID=40121944, emType=6. pValue=0019F1A0]
+[2017-08-19 21:40:29.547][P:9788/T:6604][dhnetsdk.cpp:1173][Info][0] Leave CLIENT_SetDeviceMode. [ret=1].
+[2017-08-19 21:40:29.547][P:9788/T:6604][dhnetsdk.cpp:5096][Info][0] Enter CLIENT_PlayBackByTime. [lLoginID=40121944, nChannelID=0, StartTime=2017-02% 08:15:00, StopTime=0000-01-2017 08:15:23, hWnd=0000000D, cbDownLoadPos=0000002E, dwPosUser=00020992.]
+[2017-08-19 21:40:29.547][P:9788/T:6604][dhnetsdk.cpp:5121][Info][0] ====CLIENT_PlayBackByTime:lpStartTime=2017-08-15 00:00:01, lpStopTime=2017-08-15 23:13:46
+[2017-08-19 21:40:29.665][P:9788/T:6604][dhnetsdk.cpp:5128][Info][0] Leave CLIENT_PlayBackByTime.[ret=40355960.]
+[2017-08-19 21:40:30.037][P:9788/T:6604][dhnetsdk.cpp:5526][Info][0] Enter CLIENT_GetLastError.
+[2017-08-19 21:40:30.037][P:9788/T:6604][dhnetsdk.cpp:5529][Info][0] Leave CLIENT_GetLastError.[Error code=80000081.]
+[2017-08-19 21:40:30.576][P:9788/T:6604][dhnetsdk.cpp:5526][Info][0] Enter CLIENT_GetLastError.
+[2017-08-19 21:40:30.576][P:9788/T:6604][dhnetsdk.cpp:5529][Info][0] Leave CLIENT_GetLastError.[Error code=80000081.]
+[2017-08-19 21:40:31.037][P:9788/T:6604][dhnetsdk.cpp:5526][Info][0] Enter CLIENT_GetLastError.
+[2017-08-19 21:40:31.037][P:9788/T:6604][dhnetsdk.cpp:5529][Info][0] Leave CLIENT_GetLastError.[Error code=80000081.]
+[2017-08-19 21:40:31.552][P:9788/T:6604][dhnetsdk.cpp:5526][Info][0] Enter CLIENT_GetLastError.
+[2017-08-19 21:40:31.552][P:9788/T:6604][dhnetsdk.cpp:5529][Info][0] Leave CLIENT_GetLastError.[Error code=80000081.]
+[2017-08-19 21:40:32.037][P:9788/T:6604][dhnetsdk.cpp:5526][Info][0] Enter CLIENT_GetLastError.
+[2017-08-19 21:40:32.037][P:9788/T:6604][dhnetsdk.cpp:5529][Info][0] Leave CLIENT_GetLastError.[Error code=80000081.]
+[2017-08-19 21:40:32.135][P:9788/T:13628][NetPlayBackBuffer.cpp:257][Info][0] ==In==Pause:id=0, m_iPauseFlag:0
+[2017-08-19 21:40:32.136][P:9788/T:13628][NetPlayBackBuffer.cpp:266][Info][0] ==Out=Pause:id=0, m_iPauseFlag:1
+[2017-08-19 21:40:32.239][P:9788/T:6604][dhnetsdk.cpp:1154][Info][0] Enter CLIENT_SetDeviceMode. [lLoginID=40121944, emType=6. pValue=0019F228]
+[2017-08-19 21:40:32.239][P:9788/T:6604][dhnetsdk.cpp:1173][Info][0] Leave CLIENT_SetDeviceMode. [ret=1].
+[2017-08-19 21:40:32.239][P:9788/T:6604][dhnetsdk.cpp:4899][Info][0] Enter CLIENT_FindFile. [lLoginID=40121944, nChannelId=0, nRecordFileType=0, cardid=00000000,StartTime=2017-08-16 00:00:00,EndTime=2017-08-16 23:59:59, bTime=0, waittime=2000.]
+[2017-08-19 21:40:32.295][P:9788/T:6604][dhnetsdk.cpp:4929][Info][0] Leave CLIENT_FindFile.[ret=39621920.]
+[2017-08-19 21:40:32.295][P:9788/T:6604][dhnetsdk.cpp:4946][Info][0] Enter CLIENT_FindNextFile. [lFindHandle=39621920, lpFindData=04EBFFE0.]
+[2017-08-19 21:40:32.295][P:9788/T:6604][dhnetsdk.cpp:4949][Info][0] Leave CLIENT_FindNextFile.[ret=0.]
+[2017-08-19 21:40:32.295][P:9788/T:6604][dhnetsdk.cpp:4966][Info][0] Enter CLIENT_FindClose. [lFindHandle=39621920.]
+[2017-08-19 21:40:32.295][P:9788/T:6604][dhnetsdk.cpp:4969][Info][0] Leave CLIENT_FindClose.[ret=1.]
+[2017-08-19 21:40:32.296][P:9788/T:6604][dhnetsdk.cpp:2346][Info][0] Enter CLIENT_StopPlayBack. [lPlayHandle=40355960.]
+[2017-08-19 21:40:32.399][P:9788/T:6604][dhnetsdk.cpp:2361][Info][0] Leave CLIENT_StopPlayBack.[ret=1.]
+[2017-08-19 21:40:32.408][P:9788/T:6604][dhnetsdk.cpp:1154][Info][0] Enter CLIENT_SetDeviceMode. [lLoginID=40121944, emType=6. pValue=0019F1A0]
+[2017-08-19 21:40:32.408][P:9788/T:6604][dhnetsdk.cpp:1173][Info][0] Leave CLIENT_SetDeviceMode. [ret=1].
+[2017-08-19 21:40:32.408][P:9788/T:6604][dhnetsdk.cpp:5096][Info][0] Enter CLIENT_PlayBackByTime. [lLoginID=40121944, nChannelID=0, StartTime=2017-02% 08:16:00, StopTime=0000-00-2017 08:16:00, hWnd=00000000, cbDownLoadPos=00000000, dwPosUser=00020992.]
+[2017-08-19 21:40:32.408][P:9788/T:6604][dhnetsdk.cpp:5121][Info][0] ====CLIENT_PlayBackByTime:lpStartTime=2017-08-16 00:00:00, lpStopTime=2017-08-16 00:00:00
+[2017-08-19 21:40:32.476][P:9788/T:6604][dhnetsdk.cpp:5128][Info][0] Leave CLIENT_PlayBackByTime.[ret=0.]
+[2017-08-19 21:40:34.439][P:9788/T:6604][dhnetsdk.cpp:1154][Info][0] Enter CLIENT_SetDeviceMode. [lLoginID=40121944, emType=6. pValue=0019F228]
+[2017-08-19 21:40:34.439][P:9788/T:6604][dhnetsdk.cpp:1173][Info][0] Leave CLIENT_SetDeviceMode. [ret=1].
+[2017-08-19 21:40:34.439][P:9788/T:6604][dhnetsdk.cpp:4899][Info][0] Enter CLIENT_FindFile. [lLoginID=40121944, nChannelId=0, nRecordFileType=0, cardid=00000000,StartTime=2017-08-17 00:00:00,EndTime=2017-08-17 23:59:59, bTime=0, waittime=2000.]
+[2017-08-19 21:40:34.491][P:9788/T:6604][dhnetsdk.cpp:4929][Info][0] Leave CLIENT_FindFile.[ret=39621920.]
+[2017-08-19 21:40:34.491][P:9788/T:6604][dhnetsdk.cpp:4946][Info][0] Enter CLIENT_FindNextFile. [lFindHandle=39621920, lpFindData=04EBFFE0.]
+[2017-08-19 21:40:34.491][P:9788/T:6604][dhnetsdk.cpp:4949][Info][0] Leave CLIENT_FindNextFile.[ret=0.]
+[2017-08-19 21:40:34.491][P:9788/T:6604][dhnetsdk.cpp:4966][Info][0] Enter CLIENT_FindClose. [lFindHandle=39621920.]
+[2017-08-19 21:40:34.491][P:9788/T:6604][dhnetsdk.cpp:4969][Info][0] Leave CLIENT_FindClose.[ret=1.]
+[2017-08-19 21:40:34.494][P:9788/T:6604][dhnetsdk.cpp:1154][Info][0] Enter CLIENT_SetDeviceMode. [lLoginID=40121944, emType=6. pValue=0019F1A0]
+[2017-08-19 21:40:34.494][P:9788/T:6604][dhnetsdk.cpp:1173][Info][0] Leave CLIENT_SetDeviceMode. [ret=1].
+[2017-08-19 21:40:34.494][P:9788/T:6604][dhnetsdk.cpp:5096][Info][0] Enter CLIENT_PlayBackByTime. [lLoginID=40121944, nChannelID=0, StartTime=2017-02% 08:17:00, StopTime=0000-00-2017 08:17:00, hWnd=00000000, cbDownLoadPos=00000000, dwPosUser=00020992.]
+[2017-08-19 21:40:34.494][P:9788/T:6604][dhnetsdk.cpp:5121][Info][0] ====CLIENT_PlayBackByTime:lpStartTime=2017-08-17 00:00:00, lpStopTime=2017-08-17 00:00:00
+[2017-08-19 21:40:34.568][P:9788/T:6604][dhnetsdk.cpp:5128][Info][0] Leave CLIENT_PlayBackByTime.[ret=0.]
+[2017-08-19 21:40:36.335][P:9788/T:6604][dhnetsdk.cpp:1154][Info][0] Enter CLIENT_SetDeviceMode. [lLoginID=40121944, emType=6. pValue=0019F228]
+[2017-08-19 21:40:36.335][P:9788/T:6604][dhnetsdk.cpp:1173][Info][0] Leave CLIENT_SetDeviceMode. [ret=1].
+[2017-08-19 21:40:36.335][P:9788/T:6604][dhnetsdk.cpp:4899][Info][0] Enter CLIENT_FindFile. [lLoginID=40121944, nChannelId=0, nRecordFileType=0, cardid=00000000,StartTime=2017-08-18 00:00:00,EndTime=2017-08-18 23:59:59, bTime=0, waittime=2000.]
+[2017-08-19 21:40:36.401][P:9788/T:6604][dhnetsdk.cpp:4929][Info][0] Leave CLIENT_FindFile.[ret=39621560.]
+[2017-08-19 21:40:36.401][P:9788/T:6604][dhnetsdk.cpp:4946][Info][0] Enter CLIENT_FindNextFile. [lFindHandle=39621560, lpFindData=04EBFFE0.]
+[2017-08-19 21:40:36.402][P:9788/T:6604][dhnetsdk.cpp:4949][Info][0] Leave CLIENT_FindNextFile.[ret=0.]
+[2017-08-19 21:40:36.402][P:9788/T:6604][dhnetsdk.cpp:4966][Info][0] Enter CLIENT_FindClose. [lFindHandle=39621560.]
+[2017-08-19 21:40:36.402][P:9788/T:6604][dhnetsdk.cpp:4969][Info][0] Leave CLIENT_FindClose.[ret=1.]
+[2017-08-19 21:40:36.404][P:9788/T:6604][dhnetsdk.cpp:1154][Info][0] Enter CLIENT_SetDeviceMode. [lLoginID=40121944, emType=6. pValue=0019F1A0]
+[2017-08-19 21:40:36.404][P:9788/T:6604][dhnetsdk.cpp:1173][Info][0] Leave CLIENT_SetDeviceMode. [ret=1].
+[2017-08-19 21:40:36.404][P:9788/T:6604][dhnetsdk.cpp:5096][Info][0] Enter CLIENT_PlayBackByTime. [lLoginID=40121944, nChannelID=0, StartTime=2017-02% 08:18:00, StopTime=0000-00-2017 08:18:00, hWnd=00000000, cbDownLoadPos=00000000, dwPosUser=00020992.]
+[2017-08-19 21:40:36.405][P:9788/T:6604][dhnetsdk.cpp:5121][Info][0] ====CLIENT_PlayBackByTime:lpStartTime=2017-08-18 00:00:00, lpStopTime=2017-08-18 00:00:00
+[2017-08-19 21:40:36.476][P:9788/T:6604][dhnetsdk.cpp:5128][Info][0] Leave CLIENT_PlayBackByTime.[ret=0.]
+[2017-08-19 21:40:39.063][P:9788/T:6604][dhnetsdk.cpp:1154][Info][0] Enter CLIENT_SetDeviceMode. [lLoginID=40121944, emType=6. pValue=0019F228]
+[2017-08-19 21:40:39.063][P:9788/T:6604][dhnetsdk.cpp:1173][Info][0] Leave CLIENT_SetDeviceMode. [ret=1].
+[2017-08-19 21:40:39.063][P:9788/T:6604][dhnetsdk.cpp:4899][Info][0] Enter CLIENT_FindFile. [lLoginID=40121944, nChannelId=0, nRecordFileType=0, cardid=00000000,StartTime=2017-08-19 00:00:00,EndTime=2017-08-19 23:59:59, bTime=0, waittime=2000.]
+[2017-08-19 21:40:39.134][P:9788/T:6604][dhnetsdk.cpp:4929][Info][0] Leave CLIENT_FindFile.[ret=39621560.]
+[2017-08-19 21:40:39.134][P:9788/T:6604][dhnetsdk.cpp:4946][Info][0] Enter CLIENT_FindNextFile. [lFindHandle=39621560, lpFindData=04EBFFE0.]
+[2017-08-19 21:40:39.134][P:9788/T:6604][dhnetsdk.cpp:4949][Info][0] Leave CLIENT_FindNextFile.[ret=1.]
+[2017-08-19 21:40:39.134][P:9788/T:6604][dhnetsdk.cpp:4946][Info][0] Enter CLIENT_FindNextFile. [lFindHandle=39621560, lpFindData=04EC00A4.]
+[2017-08-19 21:40:39.134][P:9788/T:6604][dhnetsdk.cpp:4949][Info][0] Leave CLIENT_FindNextFile.[ret=0.]
+[2017-08-19 21:40:39.134][P:9788/T:6604][dhnetsdk.cpp:4966][Info][0] Enter CLIENT_FindClose. [lFindHandle=39621560.]
+[2017-08-19 21:40:39.134][P:9788/T:6604][dhnetsdk.cpp:4969][Info][0] Leave CLIENT_FindClose.[ret=1.]
+[2017-08-19 21:40:39.136][P:9788/T:6604][dhnetsdk.cpp:1154][Info][0] Enter CLIENT_SetDeviceMode. [lLoginID=40121944, emType=6. pValue=0019F1A0]
+[2017-08-19 21:40:39.136][P:9788/T:6604][dhnetsdk.cpp:1173][Info][0] Leave CLIENT_SetDeviceMode. [ret=1].
+[2017-08-19 21:40:39.136][P:9788/T:6604][dhnetsdk.cpp:5096][Info][0] Enter CLIENT_PlayBackByTime. [lLoginID=40121944, nChannelID=0, StartTime=2017-02% 08:19:16, StopTime=0031-09-2017 08:19:16, hWnd=00000032, cbDownLoadPos=00000032, dwPosUser=00020992.]
+[2017-08-19 21:40:39.136][P:9788/T:6604][dhnetsdk.cpp:5121][Info][0] ====CLIENT_PlayBackByTime:lpStartTime=2017-08-19 16:31:09, lpStopTime=2017-08-19 16:50:50
+[2017-08-19 21:40:39.260][P:9788/T:6604][dhnetsdk.cpp:5128][Info][0] Leave CLIENT_PlayBackByTime.[ret=40154224.]
+[2017-08-19 21:40:39.632][P:9788/T:6604][dhnetsdk.cpp:5526][Info][0] Enter CLIENT_GetLastError.
+[2017-08-19 21:40:39.632][P:9788/T:6604][dhnetsdk.cpp:5529][Info][0] Leave CLIENT_GetLastError.[Error code=80000081.]
+[2017-08-19 21:40:40.143][P:9788/T:6604][dhnetsdk.cpp:5526][Info][0] Enter CLIENT_GetLastError.
+[2017-08-19 21:40:40.143][P:9788/T:6604][dhnetsdk.cpp:5529][Info][0] Leave CLIENT_GetLastError.[Error code=80000081.]
+[2017-08-19 21:40:40.632][P:9788/T:6604][dhnetsdk.cpp:5526][Info][0] Enter CLIENT_GetLastError.
+[2017-08-19 21:40:40.632][P:9788/T:6604][dhnetsdk.cpp:5529][Info][0] Leave CLIENT_GetLastError.[Error code=80000081.]
+[2017-08-19 21:40:41.138][P:9788/T:6604][dhnetsdk.cpp:5526][Info][0] Enter CLIENT_GetLastError.
+[2017-08-19 21:40:41.138][P:9788/T:6604][dhnetsdk.cpp:5529][Info][0] Leave CLIENT_GetLastError.[Error code=80000081.]
+[2017-08-19 21:40:41.631][P:9788/T:6604][dhnetsdk.cpp:5526][Info][0] Enter CLIENT_GetLastError.
+[2017-08-19 21:40:41.631][P:9788/T:6604][dhnetsdk.cpp:5529][Info][0] Leave CLIENT_GetLastError.[Error code=80000081.]
+[2017-08-19 21:40:42.144][P:9788/T:6604][dhnetsdk.cpp:5526][Info][0] Enter CLIENT_GetLastError.
+[2017-08-19 21:40:42.144][P:9788/T:6604][dhnetsdk.cpp:5529][Info][0] Leave CLIENT_GetLastError.[Error code=80000081.]
+[2017-08-19 21:40:42.209][P:9788/T:5936][NetPlayBackBuffer.cpp:257][Info][0] ==In==Pause:id=0, m_iPauseFlag:0
+[2017-08-19 21:40:42.209][P:9788/T:5936][NetPlayBackBuffer.cpp:266][Info][0] ==Out=Pause:id=0, m_iPauseFlag:1
+[2017-08-19 21:40:42.632][P:9788/T:6604][dhnetsdk.cpp:5526][Info][0] Enter CLIENT_GetLastError.
+[2017-08-19 21:40:42.632][P:9788/T:6604][dhnetsdk.cpp:5529][Info][0] Leave CLIENT_GetLastError.[Error code=80000081.]
+[2017-08-19 21:40:43.135][P:9788/T:6604][dhnetsdk.cpp:5526][Info][0] Enter CLIENT_GetLastError.
+[2017-08-19 21:40:43.135][P:9788/T:6604][dhnetsdk.cpp:5529][Info][0] Leave CLIENT_GetLastError.[Error code=80000081.]
+[2017-08-19 21:40:43.632][P:9788/T:6604][dhnetsdk.cpp:5526][Info][0] Enter CLIENT_GetLastError.
+[2017-08-19 21:40:43.632][P:9788/T:6604][dhnetsdk.cpp:5529][Info][0] Leave CLIENT_GetLastError.[Error code=80000081.]
+[2017-08-19 21:40:44.140][P:9788/T:6604][dhnetsdk.cpp:5526][Info][0] Enter CLIENT_GetLastError.
+[2017-08-19 21:40:44.140][P:9788/T:6604][dhnetsdk.cpp:5529][Info][0] Leave CLIENT_GetLastError.[Error code=80000081.]
+[2017-08-19 21:40:44.631][P:9788/T:6604][dhnetsdk.cpp:5526][Info][0] Enter CLIENT_GetLastError.
+[2017-08-19 21:40:44.631][P:9788/T:6604][dhnetsdk.cpp:5529][Info][0] Leave CLIENT_GetLastError.[Error code=80000081.]
+[2017-08-19 21:40:45.143][P:9788/T:6604][dhnetsdk.cpp:5526][Info][0] Enter CLIENT_GetLastError.
+[2017-08-19 21:40:45.143][P:9788/T:6604][dhnetsdk.cpp:5529][Info][0] Leave CLIENT_GetLastError.[Error code=80000081.]
+[2017-08-19 21:40:45.633][P:9788/T:6604][dhnetsdk.cpp:5526][Info][0] Enter CLIENT_GetLastError.
+[2017-08-19 21:40:45.633][P:9788/T:6604][dhnetsdk.cpp:5529][Info][0] Leave CLIENT_GetLastError.[Error code=80000081.]
+[2017-08-19 21:40:46.141][P:9788/T:6604][dhnetsdk.cpp:5526][Info][0] Enter CLIENT_GetLastError.
+[2017-08-19 21:40:46.141][P:9788/T:6604][dhnetsdk.cpp:5529][Info][0] Leave CLIENT_GetLastError.[Error code=80000081.]
+[2017-08-19 21:40:46.633][P:9788/T:6604][dhnetsdk.cpp:5526][Info][0] Enter CLIENT_GetLastError.
+[2017-08-19 21:40:46.633][P:9788/T:6604][dhnetsdk.cpp:5529][Info][0] Leave CLIENT_GetLastError.[Error code=80000081.]
+[2017-08-19 21:40:47.135][P:9788/T:6604][dhnetsdk.cpp:5526][Info][0] Enter CLIENT_GetLastError.
+[2017-08-19 21:40:47.135][P:9788/T:6604][dhnetsdk.cpp:5529][Info][0] Leave CLIENT_GetLastError.[Error code=80000081.]
+[2017-08-19 21:40:47.147][P:9788/T:4364][NetPlayBackBuffer.cpp:275][Info][0] ==In==Resume:id=0, m_iPauseFlag:1
+[2017-08-19 21:40:47.147][P:9788/T:4364][NetPlayBackBuffer.cpp:285][Info][0] ==Out=Resume:id=0, m_iPauseFlag:0
+[2017-08-19 21:40:47.631][P:9788/T:6604][dhnetsdk.cpp:5526][Info][0] Enter CLIENT_GetLastError.
+[2017-08-19 21:40:47.631][P:9788/T:6604][dhnetsdk.cpp:5529][Info][0] Leave CLIENT_GetLastError.[Error code=80000081.]
+[2017-08-19 21:40:48.138][P:9788/T:6604][dhnetsdk.cpp:5526][Info][0] Enter CLIENT_GetLastError.
+[2017-08-19 21:40:48.138][P:9788/T:6604][dhnetsdk.cpp:5529][Info][0] Leave CLIENT_GetLastError.[Error code=80000081.]
+[2017-08-19 21:40:48.577][P:9788/T:11988][NetPlayBackBuffer.cpp:257][Info][0] ==In==Pause:id=0, m_iPauseFlag:0
+[2017-08-19 21:40:48.577][P:9788/T:11988][NetPlayBackBuffer.cpp:266][Info][0] ==Out=Pause:id=0, m_iPauseFlag:1
+[2017-08-19 21:40:48.633][P:9788/T:6604][dhnetsdk.cpp:5526][Info][0] Enter CLIENT_GetLastError.
+[2017-08-19 21:40:48.633][P:9788/T:6604][dhnetsdk.cpp:5529][Info][0] Leave CLIENT_GetLastError.[Error code=80000081.]
+[2017-08-19 21:40:49.137][P:9788/T:6604][dhnetsdk.cpp:5526][Info][0] Enter CLIENT_GetLastError.
+[2017-08-19 21:40:49.137][P:9788/T:6604][dhnetsdk.cpp:5529][Info][0] Leave CLIENT_GetLastError.[Error code=80000081.]
+[2017-08-19 21:40:49.631][P:9788/T:6604][dhnetsdk.cpp:5526][Info][0] Enter CLIENT_GetLastError.
+[2017-08-19 21:40:49.631][P:9788/T:6604][dhnetsdk.cpp:5529][Info][0] Leave CLIENT_GetLastError.[Error code=80000081.]
+[2017-08-19 21:40:50.144][P:9788/T:6604][dhnetsdk.cpp:5526][Info][0] Enter CLIENT_GetLastError.
+[2017-08-19 21:40:50.144][P:9788/T:6604][dhnetsdk.cpp:5529][Info][0] Leave CLIENT_GetLastError.[Error code=80000081.]
+[2017-08-19 21:40:50.632][P:9788/T:6604][dhnetsdk.cpp:5526][Info][0] Enter CLIENT_GetLastError.
+[2017-08-19 21:40:50.632][P:9788/T:6604][dhnetsdk.cpp:5529][Info][0] Leave CLIENT_GetLastError.[Error code=80000081.]
+[2017-08-19 21:40:51.141][P:9788/T:6604][dhnetsdk.cpp:5526][Info][0] Enter CLIENT_GetLastError.
+[2017-08-19 21:40:51.141][P:9788/T:6604][dhnetsdk.cpp:5529][Info][0] Leave CLIENT_GetLastError.[Error code=80000081.]
+[2017-08-19 21:40:51.631][P:9788/T:6604][dhnetsdk.cpp:5526][Info][0] Enter CLIENT_GetLastError.
+[2017-08-19 21:40:51.631][P:9788/T:6604][dhnetsdk.cpp:5529][Info][0] Leave CLIENT_GetLastError.[Error code=80000081.]
+[2017-08-19 21:40:52.142][P:9788/T:6604][dhnetsdk.cpp:5526][Info][0] Enter CLIENT_GetLastError.
+[2017-08-19 21:40:52.142][P:9788/T:6604][dhnetsdk.cpp:5529][Info][0] Leave CLIENT_GetLastError.[Error code=80000081.]
+[2017-08-19 21:40:52.630][P:9788/T:6604][dhnetsdk.cpp:5526][Info][0] Enter CLIENT_GetLastError.
+[2017-08-19 21:40:52.630][P:9788/T:6604][dhnetsdk.cpp:5529][Info][0] Leave CLIENT_GetLastError.[Error code=80000081.]
+[2017-08-19 21:40:53.111][P:9788/T:4364][NetPlayBackBuffer.cpp:275][Info][0] ==In==Resume:id=0, m_iPauseFlag:1
+[2017-08-19 21:40:53.111][P:9788/T:4364][NetPlayBackBuffer.cpp:285][Info][0] ==Out=Resume:id=0, m_iPauseFlag:0
+[2017-08-19 21:40:53.141][P:9788/T:6604][dhnetsdk.cpp:5526][Info][0] Enter CLIENT_GetLastError.
+[2017-08-19 21:40:53.141][P:9788/T:6604][dhnetsdk.cpp:5529][Info][0] Leave CLIENT_GetLastError.[Error code=80000081.]
+[2017-08-19 21:40:53.631][P:9788/T:6604][dhnetsdk.cpp:5526][Info][0] Enter CLIENT_GetLastError.
+[2017-08-19 21:40:53.631][P:9788/T:6604][dhnetsdk.cpp:5529][Info][0] Leave CLIENT_GetLastError.[Error code=80000081.]
+[2017-08-19 21:40:54.135][P:9788/T:6604][dhnetsdk.cpp:5526][Info][0] Enter CLIENT_GetLastError.
+[2017-08-19 21:40:54.135][P:9788/T:6604][dhnetsdk.cpp:5529][Info][0] Leave CLIENT_GetLastError.[Error code=80000081.]
+[2017-08-19 21:40:54.633][P:9788/T:6604][dhnetsdk.cpp:5526][Info][0] Enter CLIENT_GetLastError.
+[2017-08-19 21:40:54.633][P:9788/T:6604][dhnetsdk.cpp:5529][Info][0] Leave CLIENT_GetLastError.[Error code=80000081.]
+[2017-08-19 21:40:54.681][P:9788/T:12292][NetPlayBackBuffer.cpp:257][Info][0] ==In==Pause:id=0, m_iPauseFlag:0
+[2017-08-19 21:40:54.681][P:9788/T:12292][NetPlayBackBuffer.cpp:266][Info][0] ==Out=Pause:id=0, m_iPauseFlag:1
+[2017-08-19 21:40:55.135][P:9788/T:6604][dhnetsdk.cpp:5526][Info][0] Enter CLIENT_GetLastError.
+[2017-08-19 21:40:55.135][P:9788/T:6604][dhnetsdk.cpp:5529][Info][0] Leave CLIENT_GetLastError.[Error code=80000081.]
+[2017-08-19 21:40:55.632][P:9788/T:6604][dhnetsdk.cpp:5526][Info][0] Enter CLIENT_GetLastError.
+[2017-08-19 21:40:55.632][P:9788/T:6604][dhnetsdk.cpp:5529][Info][0] Leave CLIENT_GetLastError.[Error code=80000081.]
+[2017-08-19 21:40:56.134][P:9788/T:6604][dhnetsdk.cpp:5526][Info][0] Enter CLIENT_GetLastError.
+[2017-08-19 21:40:56.134][P:9788/T:6604][dhnetsdk.cpp:5529][Info][0] Leave CLIENT_GetLastError.[Error code=80000081.]
+[2017-08-19 21:40:56.631][P:9788/T:6604][dhnetsdk.cpp:5526][Info][0] Enter CLIENT_GetLastError.
+[2017-08-19 21:40:56.631][P:9788/T:6604][dhnetsdk.cpp:5529][Info][0] Leave CLIENT_GetLastError.[Error code=80000081.]
+[2017-08-19 21:40:57.141][P:9788/T:6604][dhnetsdk.cpp:5526][Info][0] Enter CLIENT_GetLastError.
+[2017-08-19 21:40:57.141][P:9788/T:6604][dhnetsdk.cpp:5529][Info][0] Leave CLIENT_GetLastError.[Error code=80000081.]
+[2017-08-19 21:40:57.633][P:9788/T:6604][dhnetsdk.cpp:5526][Info][0] Enter CLIENT_GetLastError.
+[2017-08-19 21:40:57.633][P:9788/T:6604][dhnetsdk.cpp:5529][Info][0] Leave CLIENT_GetLastError.[Error code=80000081.]
+[2017-08-19 21:40:58.136][P:9788/T:6604][dhnetsdk.cpp:5526][Info][0] Enter CLIENT_GetLastError.
+[2017-08-19 21:40:58.136][P:9788/T:6604][dhnetsdk.cpp:5529][Info][0] Leave CLIENT_GetLastError.[Error code=80000081.]
+[2017-08-19 21:40:58.633][P:9788/T:6604][dhnetsdk.cpp:5526][Info][0] Enter CLIENT_GetLastError.
+[2017-08-19 21:40:58.633][P:9788/T:6604][dhnetsdk.cpp:5529][Info][0] Leave CLIENT_GetLastError.[Error code=80000081.]
+[2017-08-19 21:40:59.134][P:9788/T:6604][dhnetsdk.cpp:5526][Info][0] Enter CLIENT_GetLastError.
+[2017-08-19 21:40:59.134][P:9788/T:6604][dhnetsdk.cpp:5529][Info][0] Leave CLIENT_GetLastError.[Error code=80000081.]
+[2017-08-19 21:40:59.149][P:9788/T:4364][NetPlayBackBuffer.cpp:275][Info][0] ==In==Resume:id=0, m_iPauseFlag:1
+[2017-08-19 21:40:59.149][P:9788/T:4364][NetPlayBackBuffer.cpp:285][Info][0] ==Out=Resume:id=0, m_iPauseFlag:0
+[2017-08-19 21:40:59.630][P:9788/T:6604][dhnetsdk.cpp:5526][Info][0] Enter CLIENT_GetLastError.
+[2017-08-19 21:40:59.630][P:9788/T:6604][dhnetsdk.cpp:5529][Info][0] Leave CLIENT_GetLastError.[Error code=80000081.]
+[2017-08-19 21:41:00.140][P:9788/T:6604][dhnetsdk.cpp:5526][Info][0] Enter CLIENT_GetLastError.
+[2017-08-19 21:41:00.140][P:9788/T:6604][dhnetsdk.cpp:5529][Info][0] Leave CLIENT_GetLastError.[Error code=80000081.]
+[2017-08-19 21:41:00.632][P:9788/T:6604][dhnetsdk.cpp:5526][Info][0] Enter CLIENT_GetLastError.
+[2017-08-19 21:41:00.632][P:9788/T:6604][dhnetsdk.cpp:5529][Info][0] Leave CLIENT_GetLastError.[Error code=80000081.]
+[2017-08-19 21:41:00.777][P:9788/T:11988][NetPlayBackBuffer.cpp:257][Info][0] ==In==Pause:id=0, m_iPauseFlag:0
+[2017-08-19 21:41:00.778][P:9788/T:11988][NetPlayBackBuffer.cpp:266][Info][0] ==Out=Pause:id=0, m_iPauseFlag:1
+[2017-08-19 21:41:01.141][P:9788/T:6604][dhnetsdk.cpp:5526][Info][0] Enter CLIENT_GetLastError.
+[2017-08-19 21:41:01.141][P:9788/T:6604][dhnetsdk.cpp:5529][Info][0] Leave CLIENT_GetLastError.[Error code=80000081.]
+[2017-08-19 21:41:01.631][P:9788/T:6604][dhnetsdk.cpp:5526][Info][0] Enter CLIENT_GetLastError.
+[2017-08-19 21:41:01.631][P:9788/T:6604][dhnetsdk.cpp:5529][Info][0] Leave CLIENT_GetLastError.[Error code=80000081.]
+[2017-08-19 21:41:01.727][P:9788/T:6604][dhnetsdk.cpp:2346][Info][0] Enter CLIENT_StopPlayBack. [lPlayHandle=40154224.]
+[2017-08-19 21:41:01.811][P:9788/T:6604][dhnetsdk.cpp:2361][Info][0] Leave CLIENT_StopPlayBack.[ret=1.]
+[2017-08-19 21:41:01.820][P:9788/T:6604][dhnetsdk.cpp:612][Info][0] Enter CLIENT_Logout. [lLoginID=40121944.]
+[2017-08-19 21:41:01.820][P:9788/T:6604][TPTCPClient.cpp:695][Error][90010007] Device is not online, ip:127.0.0.1
+[2017-08-19 21:41:01.820][P:9788/T:6604][dhnetsdk.cpp:634][Info][0] Leave CLIENT_Logout. [ret=1]
