@@ -55,6 +55,7 @@ public:
 	COleDateTime m_timeFrom;
 	COleDateTime m_dateTo;
 	COleDateTime m_timeTo;
+	BOOL m_bSaveVideo;
 
 private:
 	void DeviceDisConnect(LLONG lLoginID, char *sDVRIP, LONG nDVRPort);

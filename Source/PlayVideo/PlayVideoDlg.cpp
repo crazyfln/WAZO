@@ -58,6 +58,7 @@ CPlayVideoDlg::CPlayVideoDlg(CWnd* pParent /*=NULL*/)
 	, m_timeFrom(COleDateTime::GetCurrentTime())
 	, m_dateTo(COleDateTime::GetCurrentTime())
 	, m_timeTo(COleDateTime::GetCurrentTime())
+	, m_bSaveVideo(FALSE)
 {
 	m_hIcon = AfxGetApp()->LoadIcon(IDR_MAINFRAME);
 }
@@ -74,6 +75,7 @@ void CPlayVideoDlg::DoDataExchange(CDataExchange* pDX)
 	DDX_DateTimeCtrl(pDX, IDC_TIME_FROM, m_timeFrom);
 	DDX_DateTimeCtrl(pDX, IDC_DATE_TO, m_dateTo);
 	DDX_DateTimeCtrl(pDX, IDC_TIME_TO, m_timeTo);
+	DDX_Check(pDX, IDC_CHECK_SAVEVIDEO, m_bSaveVideo);
 }
 
 BEGIN_MESSAGE_MAP(CPlayVideoDlg, CDialogEx)
@@ -234,16 +236,19 @@ int CALLBACK DataCallBackFunc(LLONG lRealHandle, DWORD dwDataType, BYTE *pBuffer
 	char szFileName[64] = { 0 };
 
 	CPlayVideoDlg *dlg = (CPlayVideoDlg *)dwUser;
-	sprintf_s(szFileName, 63, "Video_%02d_%04d%02d%02d_%02d%02d%02d_%04d%02d%02d_%02d%02d%02d.mp4", dlg->m_nChannelID + 1,
-		dlg->m_dateFrom.GetYear(), dlg->m_dateFrom.GetMonth(), dlg->m_dateFrom.GetDay(), dlg->m_timeFrom.GetHour(), dlg->m_timeFrom.GetMinute(), dlg->m_timeFrom.GetSecond(),
-		dlg->m_dateTo.GetYear(), dlg->m_dateTo.GetMonth(), dlg->m_dateTo.GetDay(), dlg->m_timeTo.GetHour(), dlg->m_timeTo.GetMinute(), dlg->m_timeTo.GetSecond());
-
-	FILE *file = NULL;
-	fopen_s(&file, szFileName, "a+b");
-	if (file)
+	if (dlg->m_bSaveVideo)
 	{
-		fwrite(pBuffer, 1, dwBufSize, file);
-		fclose(file);
+		sprintf_s(szFileName, 63, "Video_%02d_%04d%02d%02d_%02d%02d%02d_%04d%02d%02d_%02d%02d%02d.mp4", dlg->m_nChannelID + 1,
+			dlg->m_dateFrom.GetYear(), dlg->m_dateFrom.GetMonth(), dlg->m_dateFrom.GetDay(), dlg->m_timeFrom.GetHour(), dlg->m_timeFrom.GetMinute(), dlg->m_timeFrom.GetSecond(),
+			dlg->m_dateTo.GetYear(), dlg->m_dateTo.GetMonth(), dlg->m_dateTo.GetDay(), dlg->m_timeTo.GetHour(), dlg->m_timeTo.GetMinute(), dlg->m_timeTo.GetSecond());
+
+		FILE *file = NULL;
+		fopen_s(&file, szFileName, "a+b");
+		if (file)
+		{
+			fwrite(pBuffer, 1, dwBufSize, file);
+			fclose(file);
+		}
 	}
 
 	return 1;
