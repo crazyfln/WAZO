@@ -97,6 +97,17 @@ void CALLBACK DisConnectFunc(LLONG lLoginID, char *pchDVRIP, LONG nDVRPort, LDWO
 	dlg->DeviceDisConnect(lLoginID, pchDVRIP, nDVRPort);
 }
 
+//Process status callback
+void CALLBACK DownLoadPosCallBackFunc(LLONG lPlayHandle, DWORD dwTotalSize, DWORD dwDownLoadSize, LDWORD dwUser)
+{
+	if (dwUser == 0)
+		return;
+
+	CMainDialog *dlg = (CMainDialog *)dwUser;
+	if (dwDownLoadSize == -1)
+		dlg->OnButtonStop();
+}
+
 //Process when device disconnected.
 void CMainDialog::DeviceDisConnect(LLONG lLoginID, char *sDVRIP, LONG nDVRPort)
 {
@@ -210,7 +221,7 @@ void CMainDialog::OnButtonPlay(USHORT nChannel, USHORT nStartYear, USHORT nStart
 
 		for (int i = 0; i < 10; i++)
 		{
-			LLONG lHandle = CLIENT_PlayBackByTime(m_LoginID, nChannel, &netTimeFrom, &netTimeTo, hPlayBack, 0, 0);
+			LLONG lHandle = CLIENT_PlayBackByTimeEx(m_LoginID, nChannel, &netTimeFrom, &netTimeTo, hPlayBack, DownLoadPosCallBackFunc, (LDWORD)this, 0, 0);
 			if (0 != lHandle)
 			{
 				m_nChannelID = nChannel;
