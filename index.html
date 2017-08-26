@@ -1,0 +1,36 @@
+<html>  
+<head>  
+<title>PlayVideo</title>  
+<object id="PlayVideo" width=1000 height=620 classid="CLSID:336811DA-2169-42D4-829B-A6B18735BCA0" > </object>   
+</head>  
+  
+<body>  
+<input type='button' onclick="javascript:Login();" value="Login" />
+<input type='button' onclick="javascript:Play();" value="Play" />
+<input type='button' onclick="javascript:Stop();" value="Stop" />
+<input type='button' onclick="javascript:Logout();" value="Logout" />   
+</body>  
+</html>  
+  
+<script type="text/javascript">    
+function Login()  
+{  
+    PlayVideo.Login("127.0.0.1", 37777, "admin", "admin");  
+}
+
+function Play()
+{
+	PlayVideo.Play(0, 2017, 8, 14, 21, 45, 0, 2017, 8, 14, 21, 46, 0);
+}   
+
+function Stop()
+{
+	PlayVideo.Stop();
+}
+
+function Logout()
+{
+	PlayVideo.Logout();
+}
+
+</script>    

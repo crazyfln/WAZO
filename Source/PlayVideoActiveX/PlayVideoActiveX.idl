@@ -1,0 +1,55 @@
+// PlayVideoActiveX.idl : ActiveX 控件项目的类型库源。
+
+// 此文件将由 MIDL 编译器工具处理以
+// 产生类型库(PlayVideoActiveX.tlb)，该类型库将成为
+// PlayVideoActiveX.ocx.
+
+#include <olectl.h>
+#include <idispids.h>
+
+[ uuid(75FF8839-B7C9-425C-8961-462FC14788DC), version(1.0),
+  control ]
+library PlayVideoActiveXLib
+{
+	importlib(STDOLE_TLB);
+
+	//  CPlayVideoActiveXCtrl 的主调度接口
+	[ 
+		uuid(1CE85FEF-73FE-45F5-ACC2-0AF39795D5ED)	
+	]
+	dispinterface _DPlayVideoActiveX
+	{
+		properties:
+	methods:
+
+			[id(DISPID_ABOUTBOX)] void AboutBox();
+			[id(1)] void Login(BSTR strIPAddress, USHORT nPort, BSTR strUsername, BSTR strPassword);
+			[id(2)] void Logout();
+			[id(3)] void Play(USHORT nChannel, USHORT nStartYear, USHORT nStartMonth, USHORT nStartDay, USHORT nStartHour, USHORT nStartMinute, USHORT nStartSecond, USHORT nEndYear, USHORT nEndMonth, USHORT nEndDay, USHORT nEndHour, USHORT nEndMinute, USHORT nEndSecond);
+			[id(4)] void Stop();
+	};
+
+	//  CPlayVideoActiveXCtrl 的事件调度接口
+
+	[ 
+		uuid(311BE723-2B9B-432D-B249-E61D93B84DD6)	
+	]
+	dispinterface _DPlayVideoActiveXEvents
+	{
+		properties:
+			//  事件接口没有任何属性
+
+		methods:
+	};
+
+	//  CPlayVideoActiveXCtrl 的类信息
+	[
+		uuid(336811DA-2169-42D4-829B-A6B18735BCA0)
+	]
+	coclass PlayVideoActiveX
+	{
+		[default] dispinterface _DPlayVideoActiveX;
+		[default, source] dispinterface _DPlayVideoActiveXEvents;
+	};
+
+};

@@ -5,6 +5,8 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PlayVideo", "PlayVideo\PlayVideo.vcxproj", "{A6C8A162-3B90-4B8C-BF50-DCB941F225E3}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PlayVideoActiveX", "PlayVideoActiveX\PlayVideoActiveX.vcxproj", "{44436AC4-68D8-4F31-977B-3635DE0916D7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -21,6 +23,14 @@ Global
 		{A6C8A162-3B90-4B8C-BF50-DCB941F225E3}.Release|Win32.Build.0 = Release|Win32
 		{A6C8A162-3B90-4B8C-BF50-DCB941F225E3}.Release|x64.ActiveCfg = Release|x64
 		{A6C8A162-3B90-4B8C-BF50-DCB941F225E3}.Release|x64.Build.0 = Release|x64
+		{44436AC4-68D8-4F31-977B-3635DE0916D7}.Debug|Win32.ActiveCfg = Debug|Win32
+		{44436AC4-68D8-4F31-977B-3635DE0916D7}.Debug|Win32.Build.0 = Debug|Win32
+		{44436AC4-68D8-4F31-977B-3635DE0916D7}.Debug|x64.ActiveCfg = Debug|x64
+		{44436AC4-68D8-4F31-977B-3635DE0916D7}.Debug|x64.Build.0 = Debug|x64
+		{44436AC4-68D8-4F31-977B-3635DE0916D7}.Release|Win32.ActiveCfg = Release|Win32
+		{44436AC4-68D8-4F31-977B-3635DE0916D7}.Release|Win32.Build.0 = Release|Win32
+		{44436AC4-68D8-4F31-977B-3635DE0916D7}.Release|x64.ActiveCfg = Release|x64
+		{44436AC4-68D8-4F31-977B-3635DE0916D7}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
