@@ -64,18 +64,25 @@ void CMainDialog::OnBtnLogin(LPCTSTR strIPAddress, USHORT nPort, LPCTSTR strUser
 	{
 		m_LoginID = lRet;
 		m_nChannelCount = deviceInfo.byChanNum;
-		MessageBox("Login success!", "Prompt");
-	}
+		m_Wnd[0] = GetDlgItem(IDC_SCREEN_PLAYBACK1);
+		m_Wnd[1] = GetDlgItem(IDC_SCREEN_PLAYBACK2);
+		m_Wnd[2] = GetDlgItem(IDC_SCREEN_PLAYBACK3);
+		m_Wnd[3] = GetDlgItem(IDC_SCREEN_PLAYBACK4);
+		m_Wnd[4] = GetDlgItem(IDC_SCREEN_PLAYBACK5);
+		m_Wnd[5] = GetDlgItem(IDC_SCREEN_PLAYBACK6);
+		m_Wnd[6] = GetDlgItem(IDC_SCREEN_PLAYBACK7);
+		m_Wnd[7] = GetDlgItem(IDC_SCREEN_PLAYBACK8);
+		m_Wnd[8] = GetDlgItem(IDC_SCREEN_PLAYBACK9);
 
-	m_Wnd[0] = GetDlgItem(IDC_SCREEN_PLAYBACK1);
-	m_Wnd[1] = GetDlgItem(IDC_SCREEN_PLAYBACK2);
-	m_Wnd[2] = GetDlgItem(IDC_SCREEN_PLAYBACK3);
-	m_Wnd[3] = GetDlgItem(IDC_SCREEN_PLAYBACK4);
-	m_Wnd[4] = GetDlgItem(IDC_SCREEN_PLAYBACK5);
-	m_Wnd[5] = GetDlgItem(IDC_SCREEN_PLAYBACK6);
-	m_Wnd[6] = GetDlgItem(IDC_SCREEN_PLAYBACK7);
-	m_Wnd[7] = GetDlgItem(IDC_SCREEN_PLAYBACK8);
-	m_Wnd[8] = GetDlgItem(IDC_SCREEN_PLAYBACK9);
+		CString strMsg, strTemp;
+		strMsg.Format("Login success! LoginID = %d\n", m_LoginID);
+		for (int i = 0; i < MAX_CHANNELS; i++)
+		{
+			strTemp.Format("HWND[%d] = %d\n", i, m_Wnd[i]->m_hWnd);
+			strMsg += strTemp;
+		}
+		MessageBox(strMsg, "Prompt");
+	}
 }
 
 BOOL CMainDialog::OnInitDialog()
@@ -161,6 +168,9 @@ void CMainDialog::OnBtnLogout()
 	{
 		m_LoginID = 0;
 		m_nChannelCount = 0;
+		for (int i = 0; i < MAX_CHANNELS; i++)
+			m_Wnd[i] = 0;
+
 		MessageBox("Logout success!", "Prompt");
 	}
 	else
@@ -200,6 +210,7 @@ void CMainDialog::ClosePlayBack(USHORT nChannel)
 	{
 		CLIENT_StopPlayBack(m_hPlayBack[nChannel]);
 		m_hPlayBack[nChannel] = 0;
+		m_Wnd[nChannel]->Invalidate();
 	}
 }
 
@@ -238,7 +249,11 @@ void CMainDialog::OnButtonPlay(USHORT nChannel, USHORT nStartYear, USHORT nStart
 		myDlg.nChannel = nChannel;
 		for (int i = 0; i < 10; i++)
 		{
-			LLONG lHandle = CLIENT_PlayBackByTimeEx(m_LoginID, nChannel, &netTimeFrom, &netTimeTo, m_Wnd[nChannel]->m_hWnd, DownLoadPosCallBackFunc, (LDWORD)&myDlg, 0, 0);
+			LLONG lHandle = CLIENT_PlayBackByTimeEx(m_LoginID, nChannel, &netTimeFrom, &netTimeTo, m_Wnd[nChannel]->m_hWnd, 0, 0, 0, 0);
+			CString strMsg;
+			strMsg.Format("Login = %d, Channel = %d, HWND = %d", m_LoginID, nChannel, m_Wnd[nChannel]->m_hWnd);
+			MessageBox(strMsg, "Debug");
+
 			if (0 != lHandle)
 			{
 				m_hPlayBack[nChannel] = lHandle;
@@ -263,5 +278,4 @@ void CMainDialog::OnButtonPlay(USHORT nChannel, USHORT nStartYear, USHORT nStart
 void CMainDialog::OnButtonStop(USHORT nChannel)
 {
 	ClosePlayBack(nChannel);
-	m_Wnd[nChannel]->Invalidate();
 }
