@@ -42,6 +42,7 @@ private:
 	void ShowLoginErrorReason(int nError);
 	int Compare(const NET_TIME *pSrcTime, const NET_TIME *pDestTime);
 	void ClosePlayBack(USHORT nChannel);
+	virtual BOOL OnInitDialog();
 
 public:
 	friend void CALLBACK DisConnectFunc(LLONG lLoginID, char *pchDVRIP, LONG nDVRPort, LDWORD dwUser);
@@ -50,5 +51,4 @@ public:
 	void OnBtnLogout();
 	void OnButtonPlay(USHORT nChannel, USHORT nStartYear, USHORT nStartMonth, USHORT nStartDay, USHORT nStartHour, USHORT nStartMinute, USHORT nStartSecond, USHORT nEndYear, USHORT nEndMonth, USHORT nEndDay, USHORT nEndHour, USHORT nEndMinute, USHORT nEndSecond);
 	void OnButtonStop(USHORT nChannel);
-	virtual BOOL OnInitDialog();
 };

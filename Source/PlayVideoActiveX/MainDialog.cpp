@@ -64,6 +64,7 @@ void CMainDialog::OnBtnLogin(LPCTSTR strIPAddress, USHORT nPort, LPCTSTR strUser
 	{
 		m_LoginID = lRet;
 		m_nChannelCount = deviceInfo.byChanNum;
+		MessageBox("Login success!", "Prompt");
 	}
 
 	m_Wnd[0] = GetDlgItem(IDC_SCREEN_PLAYBACK1);
@@ -151,11 +152,7 @@ void CMainDialog::OnBtnLogout()
 	// TODO: 在此添加控件通知处理程序代码
 	for (int i = 0; i < MAX_CHANNELS; i++)
 	{
-		if (0 != m_hPlayBack[i])
-		{
-			CLIENT_StopPlayBack(m_hPlayBack[i]);
-			m_hPlayBack[i] = 0;
-		}
+		ClosePlayBack(i);
 	}
 
 	BOOL bRet = CLIENT_Logout(m_LoginID);
@@ -164,6 +161,7 @@ void CMainDialog::OnBtnLogout()
 	{
 		m_LoginID = 0;
 		m_nChannelCount = 0;
+		MessageBox("Logout success!", "Prompt");
 	}
 	else
 	{
@@ -264,9 +262,6 @@ void CMainDialog::OnButtonPlay(USHORT nChannel, USHORT nStartYear, USHORT nStart
 
 void CMainDialog::OnButtonStop(USHORT nChannel)
 {
-	if (0 != m_hPlayBack[nChannel])
-	{
-		ClosePlayBack(nChannel);
-		m_Wnd[nChannel]->Invalidate();
-	}
+	ClosePlayBack(nChannel);
+	m_Wnd[nChannel]->Invalidate();
 }

@@ -27,7 +27,7 @@ BEGIN_DISPATCH_MAP(CPlayVideoActiveXCtrl, COleControl)
 	DISP_FUNCTION_ID(CPlayVideoActiveXCtrl, "Login", dispidLogin, Login, VT_EMPTY, VTS_BSTR VTS_UI2 VTS_BSTR VTS_BSTR)
 	DISP_FUNCTION_ID(CPlayVideoActiveXCtrl, "Logout", dispidLogout, Logout, VT_EMPTY, VTS_NONE)
 	DISP_FUNCTION_ID(CPlayVideoActiveXCtrl, "Play", dispidPlay, Play, VT_EMPTY, VTS_UI2 VTS_UI2 VTS_UI2 VTS_UI2 VTS_UI2 VTS_UI2 VTS_UI2 VTS_UI2 VTS_UI2 VTS_UI2 VTS_UI2 VTS_UI2 VTS_UI2)
-	DISP_FUNCTION_ID(CPlayVideoActiveXCtrl, "Stop", dispidStop, Stop, VT_EMPTY, VTS_NONE)
+	DISP_FUNCTION_ID(CPlayVideoActiveXCtrl, "Stop", dispidStop, Stop, VT_EMPTY, VTS_UI2)
 END_DISPATCH_MAP()
 
 // ÊÂ¼þÓ³Éä
