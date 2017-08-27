@@ -1,13 +1,27 @@
 <html>  
 <head>  
 <title>PlayVideo</title>  
-<object id="PlayVideo" width=1000 height=620 classid="CLSID:336811DA-2169-42D4-829B-A6B18735BCA0" > </object>   
+<object id="PlayVideo" width=1120 height=700 classid="CLSID:336811DA-2169-42D4-829B-A6B18735BCA0" > </object>   
 </head>  
   
 <body>  
 <input type='button' onclick="javascript:Login();" value="Login" />
-<input type='button' onclick="javascript:Play();" value="Play" />
-<input type='button' onclick="javascript:Stop();" value="Stop" />
+<input type='button' onclick="javascript:Play1();" value="Play1" />
+<input type='button' onclick="javascript:Stop1();" value="Stop1" />
+<input type='button' onclick="javascript:Play2();" value="Play2" />
+<input type='button' onclick="javascript:Stop2();" value="Stop2" />
+<input type='button' onclick="javascript:Play3();" value="Play3" />
+<input type='button' onclick="javascript:Stop3();" value="Stop3" />
+<input type='button' onclick="javascript:Play4();" value="Play4" />
+<input type='button' onclick="javascript:Stop4();" value="Stop4" />
+<input type='button' onclick="javascript:Play5();" value="Play5" />
+<input type='button' onclick="javascript:Stop5();" value="Stop5" />
+<input type='button' onclick="javascript:Play6();" value="Play6" />
+<input type='button' onclick="javascript:Stop6();" value="Stop6" />
+<input type='button' onclick="javascript:Play7();" value="Play7" />
+<input type='button' onclick="javascript:Stop7();" value="Stop7" />
+<input type='button' onclick="javascript:Play8();" value="Play8" />
+<input type='button' onclick="javascript:Stop8();" value="Stop8" />
 <input type='button' onclick="javascript:Logout();" value="Logout" />   
 </body>  
 </html>  
@@ -18,14 +32,84 @@ function Login()
     PlayVideo.Login("127.0.0.1", 37777, "admin", "admin");  
 }
 
-function Play()
+function Play1()
 {
-	PlayVideo.Play(0, 2017, 8, 14, 21, 45, 0, 2017, 8, 14, 21, 46, 0);
+	PlayVideo.Play(0, 2017, 8, 27, 14, 11, 0, 2017, 8, 27, 14, 12, 0);
 }   
 
-function Stop()
+function Stop1()
 {
-	PlayVideo.Stop();
+	PlayVideo.Stop(0);
+}
+
+function Play2()
+{
+	PlayVideo.Play(1, 2017, 8, 27, 14, 11, 0, 2017, 8, 27, 14, 12, 0);
+}   
+
+function Stop2()
+{
+	PlayVideo.Stop(1);
+}
+
+function Play3()
+{
+	PlayVideo.Play(2, 2017, 8, 27, 14, 11, 0, 2017, 8, 27, 14, 12, 0);
+}   
+
+function Stop3()
+{
+	PlayVideo.Stop(2);
+}
+
+function Play4()
+{
+	PlayVideo.Play(3, 2017, 8, 27, 14, 11, 0, 2017, 8, 27, 14, 12, 0);
+}   
+
+function Stop4()
+{
+	PlayVideo.Stop(3);
+}
+
+function Play5()
+{
+	PlayVideo.Play(4, 2017, 8, 27, 14, 11, 0, 2017, 8, 27, 14, 12, 0);
+}   
+
+function Stop5()
+{
+	PlayVideo.Stop(4);
+}
+
+function Play6()
+{
+	PlayVideo.Play(5, 2017, 8, 27, 14, 11, 0, 2017, 8, 27, 14, 12, 0);
+}   
+
+function Stop6()
+{
+	PlayVideo.Stop(5);
+}
+
+function Play7()
+{
+	PlayVideo.Play(6, 2017, 8, 27, 14, 11, 0, 2017, 8, 27, 14, 12, 0);
+}   
+
+function Stop7()
+{
+	PlayVideo.Stop(6);
+}
+
+function Play8()
+{
+	PlayVideo.Play(7, 2017, 8, 27, 14, 11, 0, 2017, 8, 27, 14, 12, 0);
+}   
+
+function Stop8()
+{
+	PlayVideo.Stop(7);
 }
 
 function Logout()

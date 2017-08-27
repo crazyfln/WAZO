@@ -9,6 +9,8 @@
 #include "afxwin.h"
 #include "ATLComTime.h"
 
+#define MAX_CHANNELS 9
+
 // CPlayVideoDlg ¶Ô»°¿ò
 class CPlayVideoDlg : public CDialogEx
 {
@@ -44,10 +46,11 @@ private:
 	CString m_strUserName;
 	CString m_strPwd;
 	CComboBox m_ctlChannel;
-	LLONG m_hPlayBack;
+	LLONG m_hPlayBack[MAX_CHANNELS];
 	LLONG m_LoginID;
 	int m_nChannelCount;
 	bool m_bNewStart;
+	CWnd *m_Wnd[MAX_CHANNELS];
 
 public:
 	int m_nChannelID;
@@ -65,7 +68,7 @@ private:
 	void InitComboBox(int nChannel);
 	NET_TIME ConvertToDateTime(const COleDateTime &date, const COleDateTime &time);
 	int Compare(const NET_TIME *pSrcTime, const NET_TIME *pDestTime);
-	void ClosePlayBack();
+	void ClosePlayBack(int nChannel);
 
 public:
 	friend void CALLBACK DisConnectFunc(LLONG lLoginID, char *pchDVRIP, LONG nDVRPort, LDWORD dwUser);

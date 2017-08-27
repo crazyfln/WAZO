@@ -206,10 +206,10 @@ void CPlayVideoActiveXCtrl::Play(USHORT nChannel, USHORT nStartYear, USHORT nSta
 }
 
 
-void CPlayVideoActiveXCtrl::Stop()
+void CPlayVideoActiveXCtrl::Stop(USHORT nChannel)
 {
 	AFX_MANAGE_STATE(AfxGetStaticModuleState());
 
 	// TODO: 在此添加调度处理程序代码
-	m_MainDlg.OnButtonStop();
+	m_MainDlg.OnButtonStop(nChannel);
 }

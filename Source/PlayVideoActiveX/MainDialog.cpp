@@ -15,9 +15,13 @@ CMainDialog::CMainDialog(CWnd* pParent /*=NULL*/)
 	: CDialogEx(IDD_MAIN_DIALOG, pParent)
 {
 	m_LoginID = 0;
-	m_hPlayBack = 0;
 	m_nChannelCount = 0;
-	m_nChannelID = 0;
+
+	for (int i = 0; i < MAX_CHANNELS; i++)
+	{
+		m_hPlayBack[i] = 0;
+		m_Wnd[i] = 0;
+	}
 }
 
 CMainDialog::~CMainDialog()
@@ -62,16 +66,25 @@ void CMainDialog::OnBtnLogin(LPCTSTR strIPAddress, USHORT nPort, LPCTSTR strUser
 		m_nChannelCount = deviceInfo.byChanNum;
 	}
 
+	m_Wnd[0] = GetDlgItem(IDC_SCREEN_PLAYBACK1);
+	m_Wnd[1] = GetDlgItem(IDC_SCREEN_PLAYBACK2);
+	m_Wnd[2] = GetDlgItem(IDC_SCREEN_PLAYBACK3);
+	m_Wnd[3] = GetDlgItem(IDC_SCREEN_PLAYBACK4);
+	m_Wnd[4] = GetDlgItem(IDC_SCREEN_PLAYBACK5);
+	m_Wnd[5] = GetDlgItem(IDC_SCREEN_PLAYBACK6);
+	m_Wnd[6] = GetDlgItem(IDC_SCREEN_PLAYBACK7);
+	m_Wnd[7] = GetDlgItem(IDC_SCREEN_PLAYBACK8);
+	m_Wnd[8] = GetDlgItem(IDC_SCREEN_PLAYBACK9);
 }
-
 
 BOOL CMainDialog::OnInitDialog()
 {
 	CDialogEx::OnInitDialog();
 
 	// TODO:  在此添加额外的初始化
+	
 	InitNetSDK();
-
+	
 	return TRUE;  // return TRUE unless you set the focus to a control
 				  // 异常: OCX 属性页应返回 FALSE
 }
@@ -82,7 +95,7 @@ void CMainDialog::InitNetSDK()
 	BOOL ret = CLIENT_Init(DisConnectFunc, (LDWORD)this);
 	if (!ret)
 	{
-		CWnd::MessageBox("Initialize SDK failed!", "Prompt");
+		MessageBox("Initialize SDK failed!", "Prompt");
 	}
 }
 
@@ -103,39 +116,46 @@ void CALLBACK DownLoadPosCallBackFunc(LLONG lPlayHandle, DWORD dwTotalSize, DWOR
 	if (dwUser == 0)
 		return;
 
-	CMainDialog *dlg = (CMainDialog *)dwUser;
+	MyDlg *myDlg = (MyDlg *)dwUser;
+
+	CMainDialog *dlg = (CMainDialog *)(myDlg->dwUser);
+	USHORT nChannel = myDlg->nChannel;
+
 	if (dwDownLoadSize == -1)
-		dlg->OnButtonStop();
+		dlg->OnButtonStop(nChannel);
 }
 
 //Process when device disconnected.
 void CMainDialog::DeviceDisConnect(LLONG lLoginID, char *sDVRIP, LONG nDVRPort)
 {
 	//Add device disconnection process code
-	CWnd::MessageBox("Network disconnected!", "Prompt");
+	MessageBox("Network disconnected!", "Prompt");
 }
 
 //Display log in failure reason
 void CMainDialog::ShowLoginErrorReason(int nError)
 {
-	if (1 == nError)		CWnd::MessageBox("Invalid password!", "Prompt");
-	else if (2 == nError)	CWnd::MessageBox("Invalid account!", "Prompt");
-	else if (3 == nError)	CWnd::MessageBox("Timeout!", "Prompt");
-	else if (4 == nError)	CWnd::MessageBox("The user has logged in!", "Prompt");
-	else if (5 == nError)	CWnd::MessageBox("The user has been locked!", "Prompt");
-	else if (6 == nError)	CWnd::MessageBox("The user has listed into illegal!", "Prompt");
-	else if (7 == nError)	CWnd::MessageBox("The system is busy!", "Prompt");
-	else if (9 == nError)	CWnd::MessageBox("You Can't find the network server!", "Prompt");
-	else	CWnd::MessageBox("Login failed!", "Prompt");
+	if (1 == nError)		MessageBox("Invalid password!", "Prompt");
+	else if (2 == nError)	MessageBox("Invalid account!", "Prompt");
+	else if (3 == nError)	MessageBox("Timeout!", "Prompt");
+	else if (4 == nError)	MessageBox("The user has logged in!", "Prompt");
+	else if (5 == nError)	MessageBox("The user has been locked!", "Prompt");
+	else if (6 == nError)	MessageBox("The user has listed into illegal!", "Prompt");
+	else if (7 == nError)	MessageBox("The system is busy!", "Prompt");
+	else if (9 == nError)	MessageBox("You Can't find the network server!", "Prompt");
+	else	MessageBox("Login failed!", "Prompt");
 }
 
 void CMainDialog::OnBtnLogout()
 {
 	// TODO: 在此添加控件通知处理程序代码
-	if (0 != m_hPlayBack)
+	for (int i = 0; i < MAX_CHANNELS; i++)
 	{
-		CLIENT_StopPlayBack(m_hPlayBack);
-		m_hPlayBack = 0;
+		if (0 != m_hPlayBack[i])
+		{
+			CLIENT_StopPlayBack(m_hPlayBack[i]);
+			m_hPlayBack[i] = 0;
+		}
 	}
 
 	BOOL bRet = CLIENT_Logout(m_LoginID);
@@ -147,7 +167,7 @@ void CMainDialog::OnBtnLogout()
 	}
 	else
 	{
-		CWnd::MessageBox("Logout failed!", "Prompt");
+		MessageBox("Logout failed!", "Prompt");
 	}
 }
 
@@ -175,16 +195,15 @@ int CMainDialog::Compare(const NET_TIME *pSrcTime, const NET_TIME *pDestTime)
 }
 
 //Close video 
-void CMainDialog::ClosePlayBack()
+void CMainDialog::ClosePlayBack(USHORT nChannel)
 {
 	//Close video directly
-	if (0 != m_hPlayBack)
+	if (0 != m_hPlayBack[nChannel])
 	{
-		CLIENT_StopPlayBack(m_hPlayBack);
-		m_hPlayBack = 0;
+		CLIENT_StopPlayBack(m_hPlayBack[nChannel]);
+		m_hPlayBack[nChannel] = 0;
 	}
 }
-
 
 void CMainDialog::OnButtonPlay(USHORT nChannel, USHORT nStartYear, USHORT nStartMonth, USHORT nStartDay, USHORT nStartHour, USHORT nStartMinute, USHORT nStartSecond, USHORT nEndYear, USHORT nEndMonth, USHORT nEndDay, USHORT nEndHour, USHORT nEndMinute, USHORT nEndSecond)
 {
@@ -193,8 +212,7 @@ void CMainDialog::OnButtonPlay(USHORT nChannel, USHORT nStartYear, USHORT nStart
 
 	if (0 != m_LoginID)
 	{
-		ClosePlayBack();
-		m_hPlayBack = 0;
+		ClosePlayBack(nChannel);
 
 		//Time
 		NET_TIME netTimeFrom, netTimeTo;
@@ -213,19 +231,19 @@ void CMainDialog::OnButtonPlay(USHORT nChannel, USHORT nStartYear, USHORT nStart
 
 		if (Compare(&netTimeFrom, &netTimeTo) >= 0)
 		{
-			CWnd::MessageBox("Invalid time!", "Prompt");
+			MessageBox("Invalid time!", "Prompt");
 			return;
 		}
 
-		HWND hPlayBack = GetDlgItem(IDC_SCREEN_PLAYBACK)->m_hWnd;
-
+		MyDlg myDlg;
+		myDlg.dwUser = (LDWORD)this;
+		myDlg.nChannel = nChannel;
 		for (int i = 0; i < 10; i++)
 		{
-			LLONG lHandle = CLIENT_PlayBackByTimeEx(m_LoginID, nChannel, &netTimeFrom, &netTimeTo, hPlayBack, DownLoadPosCallBackFunc, (LDWORD)this, 0, 0);
+			LLONG lHandle = CLIENT_PlayBackByTimeEx(m_LoginID, nChannel, &netTimeFrom, &netTimeTo, m_Wnd[nChannel]->m_hWnd, DownLoadPosCallBackFunc, (LDWORD)&myDlg, 0, 0);
 			if (0 != lHandle)
 			{
-				m_nChannelID = nChannel;
-				m_hPlayBack = lHandle;
+				m_hPlayBack[nChannel] = lHandle;
 				bPlaySuccess = true;
 				break;
 			}
@@ -234,18 +252,21 @@ void CMainDialog::OnButtonPlay(USHORT nChannel, USHORT nStartYear, USHORT nStart
 		}
 
 		if (!bPlaySuccess)
-			CWnd::MessageBox("Playback failed!", "Prompt");
+		{
+			CString strMsg;
+			strMsg.Format("Playback channel %d failed!", nChannel + 1);
+			MessageBox(strMsg, "Prompt");
+		}
 	}
 	else
-		CWnd::MessageBox("Please login first!", "Prompt");
+		MessageBox("Please login first!", "Prompt");
 }
 
-void CMainDialog::OnButtonStop()
+void CMainDialog::OnButtonStop(USHORT nChannel)
 {
-	if (0 != m_hPlayBack)
+	if (0 != m_hPlayBack[nChannel])
 	{
-		ClosePlayBack();
-		m_hPlayBack = 0;
-		GetDlgItem(IDC_SCREEN_PLAYBACK)->Invalidate();
+		ClosePlayBack(nChannel);
+		m_Wnd[nChannel]->Invalidate();
 	}
 }

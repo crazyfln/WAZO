@@ -127,6 +127,20 @@ BOOL CPlayVideoDlg::OnInitDialog()
 	m_ctlDvrIP.SetAddress(127, 0, 0, 1);
 	InitNetSDK();
 
+	for (int i = 0; i < MAX_CHANNELS; i++)
+	{
+		m_hPlayBack[i] = 0;
+	}
+	m_Wnd[0] = GetDlgItem(IDC_SCREEN_PLAYBACK1);
+	m_Wnd[1] = GetDlgItem(IDC_SCREEN_PLAYBACK2);
+	m_Wnd[2] = GetDlgItem(IDC_SCREEN_PLAYBACK3);
+	m_Wnd[3] = GetDlgItem(IDC_SCREEN_PLAYBACK4);
+	m_Wnd[4] = GetDlgItem(IDC_SCREEN_PLAYBACK5);
+	m_Wnd[5] = GetDlgItem(IDC_SCREEN_PLAYBACK6);
+	m_Wnd[6] = GetDlgItem(IDC_SCREEN_PLAYBACK7);
+	m_Wnd[7] = GetDlgItem(IDC_SCREEN_PLAYBACK8);
+	m_Wnd[8] = GetDlgItem(IDC_SCREEN_PLAYBACK9);
+
 	return TRUE;  // 除非将焦点设置到控件，否则返回 TRUE
 }
 
@@ -184,9 +198,12 @@ void CPlayVideoDlg::OnDestroy()
 	CDialogEx::OnDestroy();
 
 	// TODO: 在此处添加消息处理程序代码
-	if (0 != m_hPlayBack)
+	for (int i = 0; i < MAX_CHANNELS; i++)
 	{
-		CLIENT_StopPlayBack(m_hPlayBack);
+		if (0 != m_hPlayBack[i])
+		{
+			CLIENT_StopPlayBack(m_hPlayBack[i]);
+		}
 	}
 
 	//Log off
@@ -259,7 +276,6 @@ void CPlayVideoDlg::DeviceDisConnect(LLONG lLoginID, char *sDVRIP, LONG nDVRPort
 {
 	//Add device disconnection process code
 	MessageBox("网络断开!", "提示");
-
 }
 
 //Get DVR IP address
@@ -313,22 +329,22 @@ void CPlayVideoDlg::OnBtnLogin()
 			m_LoginID = lRet;
 			m_nChannelCount = deviceInfo.byChanNum;
 
-			InitComboBox(m_nChannelCount);
 			GetDlgItem(IDC_BTN_LOGIN)->EnableWindow(FALSE);
 			GetDlgItem(IDC_BTN_LOGOUT)->EnableWindow(TRUE);
+			GetDlgItem(IDC_COMBO_CHANNEL)->EnableWindow(TRUE);
+			GetDlgItem(IDC_DATE_FROM)->EnableWindow(TRUE);
+			GetDlgItem(IDC_TIME_FROM)->EnableWindow(TRUE);
+			GetDlgItem(IDC_DATE_TO)->EnableWindow(TRUE);
+			GetDlgItem(IDC_TIME_TO)->EnableWindow(TRUE);
+			GetDlgItem(IDC_BUTTON_PLAY)->EnableWindow(TRUE);
+			GetDlgItem(IDC_BUTTON_STOP)->EnableWindow(TRUE);
+			GetDlgItem(IDC_BUTTON_CAPTURE_PICTURE)->EnableWindow(TRUE);
 		}
 	}
 }
 
 void CPlayVideoDlg::InitComboBox(int nChannel)
 {
-	GetDlgItem(IDC_COMBO_CHANNEL)->EnableWindow(TRUE);
-	GetDlgItem(IDC_DATE_FROM)->EnableWindow(TRUE);
-	GetDlgItem(IDC_TIME_FROM)->EnableWindow(TRUE);
-	GetDlgItem(IDC_DATE_TO)->EnableWindow(TRUE);
-	GetDlgItem(IDC_TIME_TO)->EnableWindow(TRUE);
-	GetDlgItem(IDC_BUTTON_PLAY)->EnableWindow(TRUE);
-
 	int nIndex = 0;
 	int i = 0;
 	CString str;
@@ -357,9 +373,9 @@ void CPlayVideoDlg::OnBtnLogout()
 
 		GetDlgItem(IDC_BTN_LOGIN)->EnableWindow(TRUE);
 		GetDlgItem(IDC_BTN_LOGOUT)->EnableWindow(FALSE);
-		GetDlgItem(IDC_BUTTON_CAPTURE_PICTURE)->EnableWindow(FALSE);
 		GetDlgItem(IDC_BUTTON_PLAY)->EnableWindow(FALSE);
 		GetDlgItem(IDC_BUTTON_STOP)->EnableWindow(FALSE);
+		GetDlgItem(IDC_BUTTON_CAPTURE_PICTURE)->EnableWindow(FALSE);
 	}
 	else
 	{
@@ -374,9 +390,6 @@ void CPlayVideoDlg::OnButtonPlay()
 	// TODO: 在此添加控件通知处理程序代码
 	if (0 != m_LoginID)
 	{
-		ClosePlayBack();
-		m_hPlayBack = 0;
-
 		UpdateData(TRUE);
 		
 		//Channel
@@ -393,21 +406,18 @@ void CPlayVideoDlg::OnButtonPlay()
 			return;
 		}
 
-		HWND hPlayBack = GetDlgItem(IDC_SCREEN_PLAYBACK)->m_hWnd;
-
+		ClosePlayBack(nChannelID);
+		
 		for (int i = 0; i < 10; i++)
 		{
-			LLONG lHandle = CLIENT_PlayBackByTimeEx(m_LoginID, nChannelID, &netTimeFrom, &netTimeTo, hPlayBack, DownLoadPosCallBackFunc, (LDWORD)this, DataCallBackFunc, (LDWORD)this);
+			LLONG lHandle = CLIENT_PlayBackByTimeEx(m_LoginID, nChannelID, &netTimeFrom, &netTimeTo, m_Wnd[nChannelID]->m_hWnd, DownLoadPosCallBackFunc, (LDWORD)this, DataCallBackFunc, (LDWORD)this);
 			if (0 != lHandle)
 			{
 				m_nChannelID = nChannelID;
-				m_hPlayBack = lHandle;
+				m_hPlayBack[nChannelID] = lHandle;
 				m_bNewStart = true;
 				bPlaySuccess = true;
-				GetDlgItem(IDC_BUTTON_PLAY)->EnableWindow(FALSE);
-				GetDlgItem(IDC_BUTTON_STOP)->EnableWindow(TRUE);
-				GetDlgItem(IDC_BUTTON_CAPTURE_PICTURE)->EnableWindow(TRUE);
-				
+							
 				break;
 			}
 			else
@@ -470,23 +480,22 @@ int CPlayVideoDlg::Compare(const NET_TIME *pSrcTime, const NET_TIME *pDestTime)
 }
 
 //Close video 
-void CPlayVideoDlg::ClosePlayBack()
+void CPlayVideoDlg::ClosePlayBack(int nChannel)
 {
 	//Close video directly
-	if (0 != m_hPlayBack)
+	if (0 != m_hPlayBack[nChannel])
 	{
-		CLIENT_StopPlayBack(m_hPlayBack);
-		m_hPlayBack = 0;
+		CLIENT_StopPlayBack(m_hPlayBack[nChannel]);
+		m_hPlayBack[nChannel] = 0;
 	}
 }
-
 
 void CPlayVideoDlg::OnButtonCapturePicture()
 {
 	// TODO: 在此添加控件通知处理程序代码
 	static int nPictureCount = 0;
 
-	if ((0 != m_hPlayBack) && (0 != m_LoginID))
+	if ((0 != m_hPlayBack[m_nChannelID]) && (0 != m_LoginID))
 	{
 		BOOL bSuccess = TRUE;
 		int nError = 0;
@@ -564,7 +573,7 @@ void CPlayVideoDlg::OnButtonCapturePicture()
 			pDirectory = NULL;
 		}
 
-		bSuccess = CLIENT_CapturePictureEx(m_hPlayBack, pPictureName, NET_CAPTURE_JPEG);
+		bSuccess = CLIENT_CapturePictureEx(m_hPlayBack[m_nChannelID], pPictureName, NET_CAPTURE_JPEG);
 
 		if (NULL != pPictureName)
 		{
@@ -588,13 +597,9 @@ void CPlayVideoDlg::OnButtonCapturePicture()
 void CPlayVideoDlg::OnButtonStop()
 {
 	// TODO: 在此添加控件通知处理程序代码
-	if (0 != m_hPlayBack)
+	if (0 != m_hPlayBack[m_nChannelID])
 	{
-		ClosePlayBack();
-		m_hPlayBack = 0;
-		GetDlgItem(IDC_SCREEN_PLAYBACK)->Invalidate();
-		GetDlgItem(IDC_BUTTON_PLAY)->EnableWindow(TRUE);
-		GetDlgItem(IDC_BUTTON_STOP)->EnableWindow(FALSE);
-		GetDlgItem(IDC_BUTTON_CAPTURE_PICTURE)->EnableWindow(FALSE);
+		ClosePlayBack(m_nChannelID);
+		m_Wnd[m_nChannelID]->Invalidate();
 	}
 }
