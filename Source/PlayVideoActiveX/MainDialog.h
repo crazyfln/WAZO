@@ -7,12 +7,6 @@
 #define MAX_CHANNELS 9
 
 // CMainDialog ¶Ô»°¿ò
-typedef struct  
-{
-	LDWORD dwUser;
-	USHORT nChannel;
-}MyDlg;
-
 class CMainDialog : public CDialogEx
 {
 	DECLARE_DYNAMIC(CMainDialog)

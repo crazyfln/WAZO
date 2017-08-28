@@ -6,6 +6,7 @@
 #include "MainDialog.h"
 #include "afxdialogex.h"
 
+CMainDialog *g_dlg;
 
 // CMainDialog ¶Ô»°¿ò
 
@@ -64,6 +65,7 @@ void CMainDialog::OnBtnLogin(LPCTSTR strIPAddress, USHORT nPort, LPCTSTR strUser
 	{
 		m_LoginID = lRet;
 		m_nChannelCount = deviceInfo.byChanNum;
+		g_dlg = this;
 		m_Wnd[0] = GetDlgItem(IDC_SCREEN_PLAYBACK1);
 		m_Wnd[1] = GetDlgItem(IDC_SCREEN_PLAYBACK2);
 		m_Wnd[2] = GetDlgItem(IDC_SCREEN_PLAYBACK3);
@@ -74,14 +76,14 @@ void CMainDialog::OnBtnLogin(LPCTSTR strIPAddress, USHORT nPort, LPCTSTR strUser
 		m_Wnd[7] = GetDlgItem(IDC_SCREEN_PLAYBACK8);
 		m_Wnd[8] = GetDlgItem(IDC_SCREEN_PLAYBACK9);
 
-		CString strMsg, strTemp;
+		/*CString strMsg, strTemp;
 		strMsg.Format("Login success! LoginID = %d\n", m_LoginID);
 		for (int i = 0; i < MAX_CHANNELS; i++)
 		{
 			strTemp.Format("HWND[%d] = %d\n", i, m_Wnd[i]->m_hWnd);
 			strMsg += strTemp;
 		}
-		MessageBox(strMsg, "Prompt");
+		MessageBox(strMsg, "Prompt");*/
 	}
 }
 
@@ -124,13 +126,9 @@ void CALLBACK DownLoadPosCallBackFunc(LLONG lPlayHandle, DWORD dwTotalSize, DWOR
 	if (dwUser == 0)
 		return;
 
-	MyDlg *myDlg = (MyDlg *)dwUser;
-
-	CMainDialog *dlg = (CMainDialog *)(myDlg->dwUser);
-	USHORT nChannel = myDlg->nChannel;
-
+	int nChannel = (int)dwUser;
 	if (dwDownLoadSize == -1)
-		dlg->OnButtonStop(nChannel);
+		g_dlg->ClosePlayBack(nChannel);
 }
 
 //Process when device disconnected.
@@ -168,6 +166,7 @@ void CMainDialog::OnBtnLogout()
 	{
 		m_LoginID = 0;
 		m_nChannelCount = 0;
+		g_dlg = 0;
 		for (int i = 0; i < MAX_CHANNELS; i++)
 			m_Wnd[i] = 0;
 
@@ -244,15 +243,12 @@ void CMainDialog::OnButtonPlay(USHORT nChannel, USHORT nStartYear, USHORT nStart
 			return;
 		}
 
-		MyDlg myDlg;
-		myDlg.dwUser = (LDWORD)this;
-		myDlg.nChannel = nChannel;
 		for (int i = 0; i < 10; i++)
 		{
-			LLONG lHandle = CLIENT_PlayBackByTimeEx(m_LoginID, nChannel, &netTimeFrom, &netTimeTo, m_Wnd[nChannel]->m_hWnd, 0, 0, 0, 0);
-			CString strMsg;
+			LLONG lHandle = CLIENT_PlayBackByTimeEx(m_LoginID, nChannel, &netTimeFrom, &netTimeTo, m_Wnd[nChannel]->m_hWnd, DownLoadPosCallBackFunc, (LDWORD)nChannel, 0, 0);
+			/*CString strMsg;
 			strMsg.Format("Login = %d, Channel = %d, HWND = %d", m_LoginID, nChannel, m_Wnd[nChannel]->m_hWnd);
-			MessageBox(strMsg, "Debug");
+			MessageBox(strMsg, "Debug");*/
 
 			if (0 != lHandle)
 			{
