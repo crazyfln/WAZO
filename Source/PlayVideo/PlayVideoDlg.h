@@ -11,6 +11,23 @@
 
 #define MAX_CHANNELS 9
 
+typedef struct  
+{
+	int nChannel;
+	int nStartYear;
+	int nStartMonth;
+	int nStartDay;
+	int nStartHour;
+	int nStartMinute;
+	int nStartSecond;
+	int nEndYear;
+	int nEndMonth;
+	int nEndDay;
+	int nEndHour;
+	int nEndMinute;
+	int nEndSecond;
+}MyVideoInfo;
+
 // CPlayVideoDlg ¶Ô»°¿ò
 class CPlayVideoDlg : public CDialogEx
 {
@@ -59,6 +76,7 @@ public:
 	COleDateTime m_dateTo;
 	COleDateTime m_timeTo;
 	BOOL m_bSaveVideo;
+	MyVideoInfo m_myVideo[MAX_CHANNELS];
 
 private:
 	void DeviceDisConnect(LLONG lLoginID, char *sDVRIP, LONG nDVRPort);

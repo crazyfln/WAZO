@@ -253,21 +253,19 @@ int CALLBACK DataCallBackFunc(LLONG lRealHandle, DWORD dwDataType, BYTE *pBuffer
 	char szFileName[64] = { 0 };
 
 	int nChannel = (int)dwUser;
-	if (g_dlg->m_bSaveVideo)
+	MyVideoInfo video = g_dlg->m_myVideo[nChannel];
+	sprintf_s(szFileName, 63, "Video_%02d_%04d%02d%02d_%02d%02d%02d_%04d%02d%02d_%02d%02d%02d.mp4", nChannel + 1,
+		video.nStartYear, video.nStartMonth, video.nStartDay, video.nStartHour, video.nStartMinute, video.nStartSecond,
+		video.nEndYear, video.nEndMonth, video.nEndDay, video.nEndHour, video.nEndMinute, video.nEndSecond);
+
+	FILE *file = NULL;
+	fopen_s(&file, szFileName, "a+b");
+	if (file)
 	{
-		sprintf_s(szFileName, 63, "Video_%02d_%04d%02d%02d_%02d%02d%02d_%04d%02d%02d_%02d%02d%02d.mp4", nChannel + 1,
-			g_dlg->m_dateFrom.GetYear(), g_dlg->m_dateFrom.GetMonth(), g_dlg->m_dateFrom.GetDay(), g_dlg->m_timeFrom.GetHour(), g_dlg->m_timeFrom.GetMinute(), g_dlg->m_timeFrom.GetSecond(),
-			g_dlg->m_dateTo.GetYear(), g_dlg->m_dateTo.GetMonth(), g_dlg->m_dateTo.GetDay(), g_dlg->m_timeTo.GetHour(), g_dlg->m_timeTo.GetMinute(), g_dlg->m_timeTo.GetSecond());
-
-		FILE *file = NULL;
-		fopen_s(&file, szFileName, "a+b");
-		if (file)
-		{
-			fwrite(pBuffer, 1, dwBufSize, file);
-			fclose(file);
-		}
+		fwrite(pBuffer, 1, dwBufSize, file);
+		fclose(file);
 	}
-
+	
 	return 1;
 }
 
@@ -420,12 +418,32 @@ void CPlayVideoDlg::OnButtonPlay()
 			MessageBox("无效时间!", "提示");
 			return;
 		}
-
 		ClosePlayBack(nChannelID);
-		
+
+		m_myVideo[nChannelID].nStartYear = netTimeFrom.dwYear;
+		m_myVideo[nChannelID].nStartMonth = netTimeFrom.dwMonth;
+		m_myVideo[nChannelID].nStartDay = netTimeFrom.dwDay;
+		m_myVideo[nChannelID].nStartHour = netTimeFrom.dwHour;
+		m_myVideo[nChannelID].nStartMinute = netTimeFrom.dwMinute;
+		m_myVideo[nChannelID].nStartSecond = netTimeFrom.dwSecond;
+		m_myVideo[nChannelID].nEndYear = netTimeTo.dwYear;
+		m_myVideo[nChannelID].nEndMonth = netTimeTo.dwMonth;
+		m_myVideo[nChannelID].nEndDay = netTimeTo.dwDay;
+		m_myVideo[nChannelID].nEndHour = netTimeTo.dwHour;
+		m_myVideo[nChannelID].nEndMinute = netTimeTo.dwMinute;
+		m_myVideo[nChannelID].nEndSecond = netTimeTo.dwSecond;
+
 		for (int i = 0; i < 10; i++)
 		{
-			LLONG lHandle = CLIENT_PlayBackByTimeEx(m_LoginID, nChannelID, &netTimeFrom, &netTimeTo, m_Wnd[nChannelID]->m_hWnd, DownLoadPosCallBackFunc, (LDWORD)nChannelID, DataCallBackFunc, (LDWORD)nChannelID);
+			LLONG lHandle = 0;
+			if (m_bSaveVideo)
+			{
+				
+				lHandle = CLIENT_PlayBackByTimeEx(m_LoginID, nChannelID, &netTimeFrom, &netTimeTo, m_Wnd[nChannelID]->m_hWnd, DownLoadPosCallBackFunc, (LDWORD)nChannelID, DataCallBackFunc, (LDWORD)nChannelID);
+			}
+			else
+				lHandle = CLIENT_PlayBackByTimeEx(m_LoginID, nChannelID, &netTimeFrom, &netTimeTo, m_Wnd[nChannelID]->m_hWnd, DownLoadPosCallBackFunc, (LDWORD)nChannelID, 0, 0);
+			
 			if (0 != lHandle)
 			{
 				m_nChannelID = nChannelID;
