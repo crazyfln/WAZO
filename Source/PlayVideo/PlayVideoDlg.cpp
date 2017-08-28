@@ -331,14 +331,15 @@ void CPlayVideoDlg::OnBtnLogin()
 
 			GetDlgItem(IDC_BTN_LOGIN)->EnableWindow(FALSE);
 			GetDlgItem(IDC_BTN_LOGOUT)->EnableWindow(TRUE);
+			GetDlgItem(IDC_BUTTON_PLAY)->EnableWindow(TRUE);
+			GetDlgItem(IDC_BUTTON_STOP)->EnableWindow(TRUE);
+			GetDlgItem(IDC_BUTTON_CAPTURE_PICTURE)->EnableWindow(TRUE);
 			GetDlgItem(IDC_COMBO_CHANNEL)->EnableWindow(TRUE);
 			GetDlgItem(IDC_DATE_FROM)->EnableWindow(TRUE);
 			GetDlgItem(IDC_TIME_FROM)->EnableWindow(TRUE);
 			GetDlgItem(IDC_DATE_TO)->EnableWindow(TRUE);
 			GetDlgItem(IDC_TIME_TO)->EnableWindow(TRUE);
-			GetDlgItem(IDC_BUTTON_PLAY)->EnableWindow(TRUE);
-			GetDlgItem(IDC_BUTTON_STOP)->EnableWindow(TRUE);
-			GetDlgItem(IDC_BUTTON_CAPTURE_PICTURE)->EnableWindow(TRUE);
+			GetDlgItem(IDC_CHECK_SAVEVIDEO)->EnableWindow(TRUE);
 		}
 	}
 }
@@ -384,6 +385,7 @@ void CPlayVideoDlg::OnBtnLogout()
 		GetDlgItem(IDC_TIME_FROM)->EnableWindow(FALSE);
 		GetDlgItem(IDC_DATE_TO)->EnableWindow(FALSE);
 		GetDlgItem(IDC_TIME_TO)->EnableWindow(FALSE);
+		GetDlgItem(IDC_CHECK_SAVEVIDEO)->EnableWindow(FALSE);
 	}
 	else
 	{
@@ -582,7 +584,14 @@ void CPlayVideoDlg::OnButtonCapturePicture()
 			pDirectory = NULL;
 		}
 
-		bSuccess = CLIENT_CapturePictureEx(m_hPlayBack[m_nChannelID], pPictureName, NET_CAPTURE_JPEG);
+		int nChannelId = 0;
+		int nIndex = m_ctlChannel.GetCurSel();
+		int nChannelID = (int)m_ctlChannel.GetItemData(nIndex);
+
+		if (m_hPlayBack[nChannelID])
+		{
+			bSuccess = CLIENT_CapturePictureEx(m_hPlayBack[nChannelID], pPictureName, NET_CAPTURE_JPEG);
+		}
 
 		if (NULL != pPictureName)
 		{
@@ -606,5 +615,8 @@ void CPlayVideoDlg::OnButtonCapturePicture()
 void CPlayVideoDlg::OnButtonStop()
 {
 	// TODO: 在此添加控件通知处理程序代码
-	ClosePlayBack(m_nChannelID);
+	int nChannelId = 0;
+	int nIndex = m_ctlChannel.GetCurSel();
+	int nChannelID = (int)m_ctlChannel.GetItemData(nIndex);
+	ClosePlayBack(nChannelID);
 }
