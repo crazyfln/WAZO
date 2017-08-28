@@ -11,6 +11,7 @@
 #define new DEBUG_NEW
 #endif
 
+CPlayVideoDlg *g_dlg;
 
 // 用于应用程序“关于”菜单项的 CAboutDlg 对话框
 
@@ -241,9 +242,9 @@ void CALLBACK DownLoadPosCallBackFunc(LLONG lPlayHandle, DWORD dwTotalSize, DWOR
 	if (dwUser == 0)
 		return;
 
-	CPlayVideoDlg *dlg = (CPlayVideoDlg *)dwUser;
+	int nChannel = (int)dwUser;
 	if (dwDownLoadSize == -1)
-		dlg->OnButtonStop();
+		g_dlg->ClosePlayBack(nChannel);
 }
 
 int CALLBACK DataCallBackFunc(LLONG lRealHandle, DWORD dwDataType, BYTE *pBuffer, DWORD dwBufSize, LDWORD dwUser)
@@ -251,12 +252,12 @@ int CALLBACK DataCallBackFunc(LLONG lRealHandle, DWORD dwDataType, BYTE *pBuffer
 	static int nVideoCount = 0;
 	char szFileName[64] = { 0 };
 
-	CPlayVideoDlg *dlg = (CPlayVideoDlg *)dwUser;
-	if (dlg->m_bSaveVideo)
+	int nChannel = (int)dwUser;
+	if (g_dlg->m_bSaveVideo)
 	{
-		sprintf_s(szFileName, 63, "Video_%02d_%04d%02d%02d_%02d%02d%02d_%04d%02d%02d_%02d%02d%02d.mp4", dlg->m_nChannelID + 1,
-			dlg->m_dateFrom.GetYear(), dlg->m_dateFrom.GetMonth(), dlg->m_dateFrom.GetDay(), dlg->m_timeFrom.GetHour(), dlg->m_timeFrom.GetMinute(), dlg->m_timeFrom.GetSecond(),
-			dlg->m_dateTo.GetYear(), dlg->m_dateTo.GetMonth(), dlg->m_dateTo.GetDay(), dlg->m_timeTo.GetHour(), dlg->m_timeTo.GetMinute(), dlg->m_timeTo.GetSecond());
+		sprintf_s(szFileName, 63, "Video_%02d_%04d%02d%02d_%02d%02d%02d_%04d%02d%02d_%02d%02d%02d.mp4", nChannel + 1,
+			g_dlg->m_dateFrom.GetYear(), g_dlg->m_dateFrom.GetMonth(), g_dlg->m_dateFrom.GetDay(), g_dlg->m_timeFrom.GetHour(), g_dlg->m_timeFrom.GetMinute(), g_dlg->m_timeFrom.GetSecond(),
+			g_dlg->m_dateTo.GetYear(), g_dlg->m_dateTo.GetMonth(), g_dlg->m_dateTo.GetDay(), g_dlg->m_timeTo.GetHour(), g_dlg->m_timeTo.GetMinute(), g_dlg->m_timeTo.GetSecond());
 
 		FILE *file = NULL;
 		fopen_s(&file, szFileName, "a+b");
@@ -304,6 +305,9 @@ void CPlayVideoDlg::ShowLoginErrorReason(int nError)
 void CPlayVideoDlg::OnBtnLogin()
 {
 	// TODO: 在此添加控件通知处理程序代码
+	if (!g_dlg)
+		g_dlg = this;
+
 	BOOL bValid = UpdateData(TRUE);
 	if (bValid)
 	{
@@ -373,6 +377,7 @@ void CPlayVideoDlg::OnBtnLogout()
 	{
 		m_LoginID = 0;
 		m_nChannelCount = 0;
+		g_dlg = 0;
 		InitComboBox(m_nChannelCount);
 
 		GetDlgItem(IDC_BTN_LOGIN)->EnableWindow(TRUE);
@@ -420,7 +425,7 @@ void CPlayVideoDlg::OnButtonPlay()
 		
 		for (int i = 0; i < 10; i++)
 		{
-			LLONG lHandle = CLIENT_PlayBackByTimeEx(m_LoginID, nChannelID, &netTimeFrom, &netTimeTo, m_Wnd[nChannelID]->m_hWnd, DownLoadPosCallBackFunc, (LDWORD)this, DataCallBackFunc, (LDWORD)this);
+			LLONG lHandle = CLIENT_PlayBackByTimeEx(m_LoginID, nChannelID, &netTimeFrom, &netTimeTo, m_Wnd[nChannelID]->m_hWnd, DownLoadPosCallBackFunc, (LDWORD)nChannelID, DataCallBackFunc, (LDWORD)nChannelID);
 			if (0 != lHandle)
 			{
 				m_nChannelID = nChannelID;
