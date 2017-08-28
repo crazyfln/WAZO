@@ -200,16 +200,15 @@ void CPlayVideoDlg::OnDestroy()
 	// TODO: 在此处添加消息处理程序代码
 	for (int i = 0; i < MAX_CHANNELS; i++)
 	{
-		if (0 != m_hPlayBack[i])
-		{
-			CLIENT_StopPlayBack(m_hPlayBack[i]);
-		}
+		ClosePlayBack(i);
+		m_Wnd[i] = 0;
 	}
 
 	//Log off
 	if (0 != m_LoginID)
 	{
 		BOOL bLogout = CLIENT_Logout(m_LoginID);
+		m_LoginID = 0;
 	}
 
 	//Clear SDK and then release occupied resources.
@@ -328,6 +327,7 @@ void CPlayVideoDlg::OnBtnLogin()
 		{
 			m_LoginID = lRet;
 			m_nChannelCount = deviceInfo.byChanNum;
+			InitComboBox(m_nChannelCount);
 
 			GetDlgItem(IDC_BTN_LOGIN)->EnableWindow(FALSE);
 			GetDlgItem(IDC_BTN_LOGOUT)->EnableWindow(TRUE);
@@ -361,7 +361,10 @@ void CPlayVideoDlg::InitComboBox(int nChannel)
 void CPlayVideoDlg::OnBtnLogout()
 {
 	// TODO: 在此添加控件通知处理程序代码
-	OnButtonStop();
+	for (int i = 0; i < MAX_CHANNELS; i++)
+	{
+		ClosePlayBack(i);
+	}
 
 	BOOL bRet = CLIENT_Logout(m_LoginID);
 	//Log off and then clear log in handle
@@ -376,6 +379,11 @@ void CPlayVideoDlg::OnBtnLogout()
 		GetDlgItem(IDC_BUTTON_PLAY)->EnableWindow(FALSE);
 		GetDlgItem(IDC_BUTTON_STOP)->EnableWindow(FALSE);
 		GetDlgItem(IDC_BUTTON_CAPTURE_PICTURE)->EnableWindow(FALSE);
+		GetDlgItem(IDC_COMBO_CHANNEL)->EnableWindow(FALSE);
+		GetDlgItem(IDC_DATE_FROM)->EnableWindow(FALSE);
+		GetDlgItem(IDC_TIME_FROM)->EnableWindow(FALSE);
+		GetDlgItem(IDC_DATE_TO)->EnableWindow(FALSE);
+		GetDlgItem(IDC_TIME_TO)->EnableWindow(FALSE);
 	}
 	else
 	{
@@ -487,6 +495,7 @@ void CPlayVideoDlg::ClosePlayBack(int nChannel)
 	{
 		CLIENT_StopPlayBack(m_hPlayBack[nChannel]);
 		m_hPlayBack[nChannel] = 0;
+		m_Wnd[nChannel]->Invalidate();
 	}
 }
 
@@ -597,9 +606,5 @@ void CPlayVideoDlg::OnButtonCapturePicture()
 void CPlayVideoDlg::OnButtonStop()
 {
 	// TODO: 在此添加控件通知处理程序代码
-	if (0 != m_hPlayBack[m_nChannelID])
-	{
-		ClosePlayBack(m_nChannelID);
-		m_Wnd[m_nChannelID]->Invalidate();
-	}
+	ClosePlayBack(m_nChannelID);
 }

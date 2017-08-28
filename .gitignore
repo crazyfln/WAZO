@@ -243,3 +243,8 @@ ModelManifest.xml
 /bin64/PlayVideo.exe
 /bin64/PlayVideo.iobj
 /bin64/PlayVideo.ipdb
+/bin64/PlayVideoActiveX.exp
+/bin64/PlayVideoActiveX.iobj
+/bin64/PlayVideoActiveX.ipdb
+/bin64/PlayVideoActiveX.lib
+/bin64/PlayVideoActiveX.ocx
