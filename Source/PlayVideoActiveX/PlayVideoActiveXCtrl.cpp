@@ -18,6 +18,7 @@ BEGIN_MESSAGE_MAP(CPlayVideoActiveXCtrl, COleControl)
 	ON_OLEVERB(AFX_IDS_VERB_PROPERTIES, OnProperties)
 	ON_WM_CREATE()
 	ON_WM_SIZE()
+	ON_WM_DESTROY()
 END_MESSAGE_MAP()
 
 // 调度映射
@@ -212,4 +213,13 @@ void CPlayVideoActiveXCtrl::Stop(USHORT nChannel)
 
 	// TODO: 在此添加调度处理程序代码
 	m_MainDlg.OnButtonStop(nChannel);
+}
+
+
+void CPlayVideoActiveXCtrl::OnDestroy()
+{
+	COleControl::OnDestroy();
+
+	// TODO: 在此处添加消息处理程序代码
+	m_MainDlg.OnDestroy();
 }

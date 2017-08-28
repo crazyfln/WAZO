@@ -37,6 +37,7 @@ void CMainDialog::DoDataExchange(CDataExchange* pDX)
 
 BEGIN_MESSAGE_MAP(CMainDialog, CDialogEx)
 
+	ON_WM_DESTROY()
 END_MESSAGE_MAP()
 
 
@@ -82,8 +83,8 @@ void CMainDialog::OnBtnLogin(LPCTSTR strIPAddress, USHORT nPort, LPCTSTR strUser
 		{
 			strTemp.Format("HWND[%d] = %d\n", i, m_Wnd[i]->m_hWnd);
 			strMsg += strTemp;
-		}
-		MessageBox(strMsg, "Prompt");*/
+		}*/
+		MessageBox("Login success!", "Prompt");
 	}
 }
 
@@ -106,6 +107,10 @@ void CMainDialog::InitNetSDK()
 	if (!ret)
 	{
 		MessageBox("Initialize SDK failed!", "Prompt");
+	}
+	else
+	{
+		MessageBox("Initialize SDK success!", "Prompt");
 	}
 }
 
@@ -274,4 +279,29 @@ void CMainDialog::OnButtonPlay(USHORT nChannel, USHORT nStartYear, USHORT nStart
 void CMainDialog::OnButtonStop(USHORT nChannel)
 {
 	ClosePlayBack(nChannel);
+}
+
+
+void CMainDialog::OnDestroy()
+{
+	CDialogEx::OnDestroy();
+
+	// TODO: 在此处添加消息处理程序代码
+	for (int i = 0; i < MAX_CHANNELS; i++)
+	{
+		ClosePlayBack(i);
+		m_Wnd[i] = 0;
+	}
+
+	//Log off
+	if (0 != m_LoginID)
+	{
+		BOOL bLogout = CLIENT_Logout(m_LoginID);
+		m_LoginID = 0;
+	}
+
+	//Clear SDK and then release occupied resources.
+	CLIENT_Cleanup();
+
+	MessageBox("Destroy success!", "Prompt");
 }
