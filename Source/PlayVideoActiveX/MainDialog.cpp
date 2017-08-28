@@ -84,7 +84,6 @@ void CMainDialog::OnBtnLogin(LPCTSTR strIPAddress, USHORT nPort, LPCTSTR strUser
 			strTemp.Format("HWND[%d] = %d\n", i, m_Wnd[i]->m_hWnd);
 			strMsg += strTemp;
 		}*/
-		MessageBox("Login success!", "Prompt");
 	}
 }
 
@@ -107,10 +106,6 @@ void CMainDialog::InitNetSDK()
 	if (!ret)
 	{
 		MessageBox("Initialize SDK failed!", "Prompt");
-	}
-	else
-	{
-		MessageBox("Initialize SDK success!", "Prompt");
 	}
 }
 
@@ -174,8 +169,6 @@ void CMainDialog::OnBtnLogout()
 		g_dlg = 0;
 		for (int i = 0; i < MAX_CHANNELS; i++)
 			m_Wnd[i] = 0;
-
-		MessageBox("Logout success!", "Prompt");
 	}
 	else
 	{
@@ -251,9 +244,6 @@ void CMainDialog::OnButtonPlay(USHORT nChannel, USHORT nStartYear, USHORT nStart
 		for (int i = 0; i < 10; i++)
 		{
 			LLONG lHandle = CLIENT_PlayBackByTimeEx(m_LoginID, nChannel, &netTimeFrom, &netTimeTo, m_Wnd[nChannel]->m_hWnd, DownLoadPosCallBackFunc, (LDWORD)nChannel, 0, 0);
-			/*CString strMsg;
-			strMsg.Format("Login = %d, Channel = %d, HWND = %d", m_LoginID, nChannel, m_Wnd[nChannel]->m_hWnd);
-			MessageBox(strMsg, "Debug");*/
 
 			if (0 != lHandle)
 			{
@@ -302,6 +292,4 @@ void CMainDialog::OnDestroy()
 
 	//Clear SDK and then release occupied resources.
 	CLIENT_Cleanup();
-
-	MessageBox("Destroy success!", "Prompt");
 }
