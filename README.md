@@ -1,17 +1,17 @@
 # WAZO
 
 
-目录介绍：
-1.Source：源代码目录，包含C/S架构的视频检索客户端PlayVideo和B/S架构的视频检索客户端PlayVideoActiveX，下面有详细介绍
-2. include：大华SDK头文件
-3. lib：32位大华SDK库
-4. lib64：64位大华SDK库
-5. bin：32位大华SDK动态链接库
-6. bin64：64位大华SDK动态链接库
-7. software：用于搭建NTP服务器的第三方软件
-8. doc：大华SDK库帮助文档与编程手册
+## 目录介绍：
+        Source：源代码目录，包含C/S架构的视频检索客户端PlayVideo和B/S架构的视频检索客户端PlayVideoActiveX，下面有详细介绍
+        include：大华SDK头文件
+        lib：32位大华SDK库
+        lib64：64位大华SDK库
+        bin：32位大华SDK动态链接库
+        bin64：64位大华SDK动态链接库
+        software：用于搭建NTP服务器的第三方软件
+        doc：大华SDK库帮助文档与编程手册
 
-搭建视频服务器步骤：
+## 搭建视频服务器步骤：
 1. 下载SmartPSS软件，地址：http://download.dahuatech.com/tools_det.php?cid=1054&id=484
 2. 安装SmartPSS软件，设置管理员用户名密码
 3. 每台摄像机都设为相同的用户名和密码
@@ -22,7 +22,7 @@
 8. 在通道管理界面，将左侧所有要录像的摄像机添加到右侧，然后点击保存即可
 9. 录像计划页面可以选择录像计划，默认所有时间全部录像
 
-搭建NTP服务器步骤：
+## 搭建NTP服务器步骤：
 1. 在服务器上依次安装ntp-4.2.8-win32-setup.exe（NTP服务器软件）以及ntp-time-server-monitor-104.exe（NTP服务器监控软件）
 2. 安装时选择默认安装即可
 3. 定位到NTP服务器安装目录，找到\etc\ntp.conf文件，去掉下面两行的注释（即删除前面的#号），保存文件
@@ -33,12 +33,10 @@
 6. 所有相机的NTP都设置为服务器，端口用默认的123即可
 
 
-PlayVideo工程：
-
+## PlayVideo工程：
 此工程为视频检索客户端软件，使用VS2015生成可执行文件后运行即可。打开后填入视频服务器或录像机的IP地址，端口，用户名，密码后登录，然后选择视频通道号，起始时间，结束时间后点击播放即可。
 播放过程中可以选择是否在播放结束后将视频保存至本地。播放结束后自动停止，也可在播放过程中手动停止。播放过程中点击抓图按钮即可自动抓图并保存在当前文件夹。点击注销按钮可从视频服务器或录像机注销登录。
 
-PlayVideoActiveX工程：
-
+## PlayVideoActiveX工程：
 此工程为视频检索ActiveX控件，用于在IE浏览器中检索视频。使用VS2015生成ocx控件后，在命令行中使用regsvr32进行注册。注册成功后，使用regedit注册表编辑器，在HKEY_CLASSES_ROOT下找到PlayVideoActiveX控件，并记下它的CLSID。
 编辑index.html示例文件，将CLSID填入对应的Object标签。通过js代码调用Login()函数并填入IP地址，端口，用户名，密码，即可登录视频服务器/录像机；调用Play函数并填入视频通道号，起始时间，结束时间，即可播放视频；调用Stop函数停止播放视频；调用Logout函数注销登录。
