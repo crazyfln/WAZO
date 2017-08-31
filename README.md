@@ -1,5 +1,27 @@
 # WAZO
 
+
+目录介绍：
+    Source：源代码目录，包含C/S架构的视频检索客户端PlayVideo和B/S架构的视频检索客户端PlayVideoActiveX，下面有详细介绍
+    include：大华SDK头文件
+    lib：32位大华SDK库
+    lib64：64位大华SDK库
+    bin：32位大华SDK动态链接库
+    bin64：64位大华SDK动态链接库
+    software：用于搭建NTP服务器的第三方软件
+    doc：大华SDK库帮助文档与编程手册
+
+搭建视频服务器步骤：
+1. 下载SmartPSS软件，地址：http://download.dahuatech.com/tools_det.php?cid=1054&id=484
+2. 安装SmartPSS软件，设置管理员用户名密码
+3. 每台摄像机都设为相同的用户名和密码
+4. 打开SmartPSS软件，选择设备管理，并点击自动搜索，会自动找到局域网里所有的大华摄像机，并填入摄像机的用户名密码
+5. 检查摄像机列表，确保每台摄像机信息正确并处于在线状态
+6. 返回SmartPSS主界面，选择PC-NVR
+7. 在磁盘管理界面，为视频服务器分配硬盘空间，拖动进度条选择合适的空间，然后点击分配即可
+8. 在通道管理界面，将左侧所有要录像的摄像机添加到右侧，然后点击保存即可
+9. 录像计划页面可以选择录像计划，默认所有时间全部录像
+
 搭建NTP服务器步骤：
 1. 在服务器上依次安装ntp-4.2.8-win32-setup.exe（NTP服务器软件）以及ntp-time-server-monitor-104.exe（NTP服务器监控软件）
 2. 安装时选择默认安装即可
@@ -9,6 +31,7 @@
 4. 创建\etc\ntp.drift文件，然后编辑文件，在文件中添加内容“0.000”（不要引号），然后保存关闭
 5. 在NTP监控客户端里重启NTP服务器即可，Start Type设为Automatically即可，每次重启系统会自动启动NTP服务
 6. 所有相机的NTP都设置为服务器，端口用默认的123即可
+
 
 PlayVideo工程：
 
