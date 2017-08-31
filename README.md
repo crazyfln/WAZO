@@ -2,14 +2,14 @@
 
 
 目录介绍：
-    Source：源代码目录，包含C/S架构的视频检索客户端PlayVideo和B/S架构的视频检索客户端PlayVideoActiveX，下面有详细介绍
-    include：大华SDK头文件
-    lib：32位大华SDK库
-    lib64：64位大华SDK库
-    bin：32位大华SDK动态链接库
-    bin64：64位大华SDK动态链接库
-    software：用于搭建NTP服务器的第三方软件
-    doc：大华SDK库帮助文档与编程手册
+1.Source：源代码目录，包含C/S架构的视频检索客户端PlayVideo和B/S架构的视频检索客户端PlayVideoActiveX，下面有详细介绍
+2. include：大华SDK头文件
+3. lib：32位大华SDK库
+4. lib64：64位大华SDK库
+5. bin：32位大华SDK动态链接库
+6. bin64：64位大华SDK动态链接库
+7. software：用于搭建NTP服务器的第三方软件
+8. doc：大华SDK库帮助文档与编程手册
 
 搭建视频服务器步骤：
 1. 下载SmartPSS软件，地址：http://download.dahuatech.com/tools_det.php?cid=1054&id=484
